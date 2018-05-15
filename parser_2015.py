@@ -51,6 +51,43 @@ class TwitterParser():
         self.all_json = res
         return True
 
+
+    def sort_file(self,path_file,path_out=None):
+        '''
+        sort file by ids and write to the given out path
+        :param path_out:  output path, if None then overwrite
+        :param path_file: path to the given file to sort
+        '''
+        name = str(path_file).split('/')[-1]
+        data_stream = None
+        dico={}
+        try:
+            with open(path_file) as f:
+                data = f.read()
+                data_stream = json.loads(data)
+                print "done"
+        except IOError as e:
+            print "[Error] : path:{}".format(path_file)
+            print "I/O error({0}): {1}".format(e.errno, e.strerror)
+            return None
+        except Exception as e:
+            print "[Error] Unexpected error: path:{}".format(path_file)
+            print "Unexpected error({0})".format(e.message)
+            return None
+        for entry in data_stream['arr_tweets']:
+            id_i = str(entry['id']).split(':')[-1]
+            dico[id_i]=entry
+        sorted_keys = ht.quicksort(dico.keys())
+        print ""
+        if path_out is None:
+            path_out = '/'.join(str(path_file).split('/')[:-1])
+        for ky in sorted_keys:
+            with open('{}/{}'.format(path_out,name), 'a') as outfile:
+                json.dump(dico[ky], outfile)
+        print "end !!"
+        return True
+
+
     def parser_by(self, tweet_id=None):
         map_dict = {}
         for file_i in self.all_json:
@@ -160,11 +197,15 @@ def flush(jsons_list, name, dir):
 
 
 if __name__ == "__main__":
-    path_p = '/home/ise/NLP/json_twitter/tweetJson'
+    path_p = '/home/ise/NLP/oren/data/tweetJson'
     out_p = '/home/ise/Desktop/nlp_ex'
+    file_example = '/home/ise/NLP/data_twitter/tweetJson/00_activities_4i1_2B52XfqGHw8dRxsprQ0BfBXVg.json'
     TP = TwitterParser(path_p, out_p)
+    TP.sort_file(file_example,out_p)
+    exit()
     if TP.get_all_json_file():
-        TP.get_IDs_files()
+        #TP.get_IDs_files()
+        #TP.fixer_json()
         exit()
         map = TP.parser_by()
         res = TP.make_list(map)
