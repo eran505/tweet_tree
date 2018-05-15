@@ -1,4 +1,6 @@
-import os,re
+import os, re
+
+
 def walk_rec(root, list_res, rec="", file_t=True, lv=-800, full=True):
     size = 0
     ctr = 0
@@ -34,7 +36,6 @@ def walk_rec(root, list_res, rec="", file_t=True, lv=-800, full=True):
     return class_list
 
 
-
 def mkdir_system(path_root, name, is_del=True):
     if path_root is None:
         raise Exception("[Error] passing a None path --> {}".format(path_root))
@@ -49,5 +50,6 @@ def mkdir_system(path_root, name, is_del=True):
     os.system('mkdir {}{}'.format(path_root, name))
     return '{}{}'.format(path_root, name)
 
+
 if __name__ == "__main__":
-    print "----handler----"
+    print '------handler-----'
