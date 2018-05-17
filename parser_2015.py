@@ -2,6 +2,7 @@ import os, json, re
 import handler_tweet as ht
 import csv
 import hashlib
+from collections import OrderedDict
 
 
 # # # # TWITTER  # # # #
@@ -51,7 +52,9 @@ class TwitterParser():
         self.all_json = res
         return True
 
-
+    def sort_all(self):
+        for j_json in self.all_json:
+            self.sort_file(j_json,self.output_path)
     def sort_file(self,path_file,path_out=None):
         '''
         sort file by ids and write to the given out path
@@ -77,13 +80,20 @@ class TwitterParser():
         for entry in data_stream['arr_tweets']:
             id_i = str(entry['id']).split(':')[-1]
             dico[id_i]=entry
-        sorted_keys = ht.quicksort(dico.keys())
+        list_keys = dico.keys()
+        list_keys = [long(x) for x in list_keys]
+        list_keys = sorted(list_keys)
         print ""
         if path_out is None:
             path_out = '/'.join(str(path_file).split('/')[:-1])
-        for ky in sorted_keys:
+        for ky in list_keys:
             with open('{}/{}'.format(path_out,name), 'a') as outfile:
-                json.dump(dico[ky], outfile)
+                if len(str(ky))<4:
+                    print "errorrr"
+                    continue
+                outfile.write("{}@#@".format(ky))
+                json.dump(dico[str(ky)], outfile)
+                outfile.write('\n')
         print "end !!"
         return True
 
@@ -197,13 +207,12 @@ def flush(jsons_list, name, dir):
 
 
 if __name__ == "__main__":
-    path_p = '/home/ise/NLP/oren/data/tweetJson'
-    out_p = '/home/ise/Desktop/nlp_ex'
-    file_example = '/home/ise/NLP/data_twitter/tweetJson/00_activities_4i1_2B52XfqGHw8dRxsprQ0BfBXVg.json'
+    path_p = '/home/ise/NLP/json_twitter/tweetJson/'
+    out_p = '/home/ise/Desktop/nlp_ex/out'
+    file_example = '/home/ise/NLP/json_twitter/tweetJson/00_activities_5G7oeVOPgCYt8Xwu_2BYWSPm7lOy4.json'
     TP = TwitterParser(path_p, out_p)
-    TP.sort_file(file_example,out_p)
-    exit()
     if TP.get_all_json_file():
+        TP.sort_all()
         #TP.get_IDs_files()
         #TP.fixer_json()
         exit()
