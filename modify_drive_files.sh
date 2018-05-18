@@ -6,6 +6,8 @@ dir_name="tweetJson"
 
 input_path=${1}
 
+NLP=${2}
+
 if [ -z "${input_path}" ]; then
     echo "[Error] no path was given"
     exit
@@ -56,3 +58,5 @@ for f in "$cur_path"*; do
         fi
     fi
 done
+
+python ${NLP}/parser_2015.py fix ${cur_path}${dir_name}

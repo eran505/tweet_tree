@@ -205,18 +205,44 @@ def flush(jsons_list, name, dir):
     with open('{}/{}.json'.format(dir, name), 'w') as file:
         file.write(json.dumps(d))
 
+def sort_to_big(all_sort_file):
+    arr_pointer={}
+    #inital array of pointers
+    for file_sort in all_sort_file:
+        arr_pointer[file_sort]=0
 
+def extract_min():
+    '''
+    get the minimal item from all the files
+    :return: key of the minimal
+    '''
+    
+    pass
+def command_parser(args):
+    if len(args)>1:
+        if args[1] =='fix':
+            print "args path: {}".format(args[2])
+            TP = TwitterParser(args[2], args[2])
+            if TP.get_all_json_file():
+                TP.fixer_json()
+                print "Done !"
+            else:
+                print "[Error] with the path: {} ".format(args[2])
+            exit(0)
+        if args[1]=='sort':
+            print "args path: {}".format(args[2])
+            sorted_dir = ht.mkdir_system(args[2],'sorted')
+            TP = TwitterParser(args[2], sorted_dir)
+            if TP.get_all_json_file():
+                TP.sort_all()
+                print "Done !"
+            else:
+                print "[Error] with the path: {} ".format(args[2])
+
+
+import sys
 if __name__ == "__main__":
     path_p = '/home/ise/NLP/json_twitter/tweetJson/'
     out_p = '/home/ise/Desktop/nlp_ex/out'
-    file_example = '/home/ise/NLP/json_twitter/tweetJson/00_activities_5G7oeVOPgCYt8Xwu_2BYWSPm7lOy4.json'
-    TP = TwitterParser(path_p, out_p)
-    if TP.get_all_json_file():
-        TP.sort_all()
-        #TP.get_IDs_files()
-        #TP.fixer_json()
-        exit()
-        map = TP.parser_by()
-        res = TP.make_list(map)
-        TP.flush_all(res)
-        exit()
+    sys.argv=['','sort','/home/ise/NLP/oren/big_data/DATA/tweetJson']
+    command_parser(sys.argv)
