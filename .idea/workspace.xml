@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d739ee63-b558-41fc-9b03-19fa03aae1c7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tweet_tree.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tweet_tree.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser_2015.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_2015.py" afterDir="false" />
-    </list>
+    <list default="true" id="d739ee63-b558-41fc-9b03-19fa03aae1c7" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +17,8 @@
       <file leaf-file-name="parser_2015.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parser_2015.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="509" column="16" selection-start-line="509" selection-start-column="16" selection-end-line="509" selection-end-column="16" />
+            <state relative-caret-position="394">
+              <caret line="524" column="10" lean-forward="true" selection-start-line="524" selection-start-column="10" selection-end-line="524" selection-end-column="10" />
               <folding>
                 <element signature="e#7908#8143#0" />
                 <element signature="e#8171#8222#0" />
@@ -301,7 +296,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32917318" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32917318" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -429,8 +424,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parser_2015.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="509" column="16" selection-start-line="509" selection-start-column="16" selection-end-line="509" selection-end-column="16" />
+        <state relative-caret-position="394">
+          <caret line="524" column="10" lean-forward="true" selection-start-line="524" selection-start-column="10" selection-end-line="524" selection-end-column="10" />
           <folding>
             <element signature="e#7908#8143#0" />
             <element signature="e#8171#8222#0" />
