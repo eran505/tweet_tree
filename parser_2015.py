@@ -326,8 +326,9 @@ def build_trees(f_name_big, long=5):
     start =True
     while not_done:
         if start:
-            for x in range(30000):
-                cur_line = big_file.readline()
+            # for x in range(30000):
+            #    cur_line = big_file.readline()
+            cur_line = big_file.readline()
             start=False
         cur_line = big_file.readline()
         if cur_line is None or len(cur_line) < 1:
@@ -419,7 +420,7 @@ def binary_search_ram(ram, value):
     return False, None
 
 
-def binary_search(value, path_file, ram, ram_size=1000000):
+def binary_search(value, path_file, ram, ram_size=10000000):
     """
     ram[0] = min id
     ram[1] = max id
@@ -515,15 +516,17 @@ def command_parser(args):
             big_dir = ht.mkdir_system(args[3], 'big')
             if TP.get_all_json_file():
                 sort_to_big(TP.all_json, big_dir)
+        if args[1]=='build':
+            print "path: {}".format(args[2])
+            build_trees(args[2])
+
 
 
 import sys
 
 if __name__ == "__main__":
-    big_path = '/home/ise/Desktop/nlp_ex/out/big/big.json'
-    build_trees(big_path)
-    exit()
-    path_p = '/home/ise/NLP/json_twitter/tweetJson/sorted'
-    out_p = '/home/ise/Desktop/nlp_ex/out'
-    sys.argv = ['', 'ex', path_p, out_p]
+    # exit()
+    # path_p = '/home/ise/NLP/json_twitter/tweetJson/sorted'
+    # out_p = '/home/ise/Desktop/nlp_ex/out'
+    # sys.argv = ['', 'ex', path_p, out_p]
     command_parser(sys.argv)
