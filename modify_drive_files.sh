@@ -5,7 +5,7 @@
 dir_name="tweetJson"
 
 input_path=${1}
-
+# some comment remove this line, only or test reasons
 NLP=${2}
 
 if [ -z "${input_path}" ]; then

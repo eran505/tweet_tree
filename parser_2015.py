@@ -511,7 +511,7 @@ def command_parser(args):
                 print "Done !"
             else:
                 print "[Error] with the path: {} ".format(args[2])
-        if args[1] == 'mk big':
+        if args[1] == 'mkbig':
             TP = TwitterParser(args[2], args[3])
             big_dir = ht.mkdir_system(args[3], 'big')
             if TP.get_all_json_file():
