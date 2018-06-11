@@ -7,14 +7,16 @@ import hashlib
 
 import sys
 
+
 def clean_string(string, prefix_symbol):
-    ctr=0
+    ctr = 0
     for x in string:
-        if x==prefix_symbol:
+        if x == prefix_symbol:
             break
         else:
-            ctr+=1
+            ctr += 1
     return string[ctr:]
+
 
 def convert(string):
     if string is None:
@@ -23,15 +25,14 @@ def convert(string):
         return long(string)
 
 
-
 def getline(file_io):
     data_line = file_io.readline()
     while data_line is not None and len(str(data_line)) < 20:
         data_line = file_io.readline()
-        if len(str(data_line)) < 1 :
+        if len(str(data_line)) < 1:
             return data_line
         print "->{}".format(data_line)
-    #data_line = clean_string(data_line,'{')
+    # data_line = clean_string(data_line,'{')
     return data_line
 
 
@@ -227,12 +228,23 @@ class Parser:
                 is_break = True
         print "done !"
 
+    def make_big_json(self, path_sorted, path_out):
+        """
+        building the big file (merge all the sorted file into one big file)
+        :param path_sorted:
+        :param path_out:
+        :return:
+        """
+        big_dir = ht.mkdir_system(path_out, 'big')
+        self.get_all_files(path_sorted)
+        self.sort_to_big(p_pars.files, big_dir)
+
 
 if __name__ == "__main__":
     print "starting..."
     path_in = '/home/ise/NLP/oren_data/DATA'
     path_out = '/home/ise/NLP/oren_data/out'
     p_pars = Parser(path_in, path_out)
-    p_pars.constract_fix_json_dir()
-
-    p_pars.sort_to_big(p_pars.files,p_pars.out_dir)
+    p_pars.make_big_json('/home/ise/NLP/oren_data/out/sorted', '/home/ise/NLP/oren_data/out')
+    exit()
+    p_pars.constra ct_fix_json_dir()
