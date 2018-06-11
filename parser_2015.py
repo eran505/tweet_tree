@@ -43,7 +43,7 @@ class TwitterParser():
         text_new[-1] = str(text_new[-1]) + "] }"
         ##print text_new[-1]
         text_new[0] = '{\n"arr_tweets":[\n' + str(text_new[0][1:])
-        print text_new[0]
+
         with open(path_json, "w") as file:
             file.writelines(text_new)
 
