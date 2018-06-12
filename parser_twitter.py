@@ -195,7 +195,7 @@ class Parser:
             self.fix_json(file_i)
         self.get_all_files(self.out_dir)
         self.get_all_files(self.out_dir)
-        p_path = ht.mkdir_system(path_out, 'sorted')
+        p_path = ht.mkdir_system(self.path_out, 'sorted')
         for x in self.files:
             self.sort_file(x, p_path)
         print "done !"
@@ -237,10 +237,19 @@ class Parser:
         """
         big_dir = ht.mkdir_system(path_out, 'big')
         self.get_all_files(path_sorted)
-        self.sort_to_big(p_pars.files, big_dir)
+        self.sort_to_big(self.files, big_dir)
 
-
-
+    def full_process(self):
+        self.constract_fix_json_dir()
+        if self.out_dir[-1] == '/':
+            sort_p = '{}sorted'.format(self.out_dir)
+            big_p = '{}big'.format(self.out_dir)
+        else:
+            big_p = '{}/big'.format(self.out_dir)
+            sort_p = '{}/sorted'.format(self.out_dir)
+        self.make_big_json(sort_p,self.out_dir)
+        print "done !!"
+        build_trees("{}/big.json".format(big_p))
 
 def build_trees(f_name_big, long=5):
     """
@@ -249,7 +258,7 @@ def build_trees(f_name_big, long=5):
     :param f_name_big: the big file (sorted file)
     :return: trees files
     """
-    ram_big = ["1", "1",[],0,0]
+    ram_big = ["1", "1", [], 0, 0]
     out_dir = '/'.join(str(f_name_big).split('/')[:-1])
     lookup_dir = ht.mkdir_system(out_dir, 'lookup')
     trees_dir = ht.mkdir_system(out_dir, 'trees')
@@ -258,12 +267,12 @@ def build_trees(f_name_big, long=5):
     not_done = True
     big_file = open('{}'.format(f_name_big), 'r')
     dico_data = {}
-    start =True
+    start = True
     while not_done:
         if start:
-            # for x in range(30000):
+            #for x in range(30000):
             #    cur_line = big_file.readline()
-            start=False
+            start = False
         cur_line = big_file.readline()
         if cur_line is None or len(cur_line) < 1:
             break
@@ -295,6 +304,7 @@ def build_trees(f_name_big, long=5):
             print "found !!!"
             cur_line = replay_data
 
+
 def _look_up(id, dir_lookup, long):
     file_name = id[:long]
     if os.path.isfile('{}/{}.txt'.format(dir_lookup, file_name)):
@@ -323,7 +333,6 @@ def get_replay(jsonstring):
     return replay_id
 
 
-
 def flush_tree(dico_json_data, lookup_dir, trees_dir, long, append_to=None):
     """
     dump the list of json as a file and write to lookup table
@@ -346,14 +355,11 @@ def flush_tree(dico_json_data, lookup_dir, trees_dir, long, append_to=None):
             myfile.write('\n')
 
 
-
 def _get_size_file(f_name):
     with open(f_name) as f:
         for i, l in enumerate(f):
             pass
     return i + 1
-
-
 
 
 def _get_line(index, f_name, fill, ram):
@@ -371,7 +377,6 @@ def _get_line(index, f_name, fill, ram):
             ram[2].append(line)
     num = str(line).split('@#@')[0]
     return num, line
-
 
 
 def binary_search(value, path_file, ram, ram_size=10000000):
@@ -408,8 +413,8 @@ def binary_search(value, path_file, ram, ram_size=10000000):
             high = mid - 1
         # ####### RAM ######### #
         if low + (high - low) <= ram_size:
-            _fill_ram(ram,low,high,path_file,size)
-            #mid_value, data = _get_line(mid, path_file, True, ram)
+            _fill_ram(ram, low, high, path_file, size)
+            # mid_value, data = _get_line(mid, path_file, True, ram)
             if mid_value == value:
                 return data
             else:
@@ -417,19 +422,20 @@ def binary_search(value, path_file, ram, ram_size=10000000):
                 return ans
     return None
 
-def _fill_ram(ram,low,high,path,size):
+
+def _fill_ram(ram, low, high, path, size):
     print "filling RAM....."
     f = open(path, 'r+')
-    ram[3]=0
-    ram[4]=0
-    if low-1 == 0:
-        ram[3]=1
-    if high > size-1:
-        ram[4]=1
-    for i in xrange(high+1):
+    ram[3] = 0
+    ram[4] = 0
+    if low - 1 == 0:
+        ram[3] = 1
+    if high > size - 1:
+        ram[4] = 1
+    for i in xrange(high + 1):
         line = f.readline()
         if True:
-            if i == low-1:
+            if i == low - 1:
                 ram[0] = str(line).split('@#@')[0]
             elif i == high:
                 ram[1] = str(line).split('@#@')[0]
@@ -453,19 +459,34 @@ def binary_search_ram(ram, value):
                     high = mid - 1
             return True, None
         else:
-            if ram[4]==1:
-                return True,None
+            if ram[4] == 1:
+                return True, None
     else:
-        if ram[3]==1:
-            return True,None
+        if ram[3] == 1:
+            return True, None
     return False, None
+
+def parser_command():
+    args = sys.argv
+    if len(args) < 2:
+        print 'no path was given'
+        print "python parser_twitter [path_zip] [path_out] [ram_size=10M]"
+    else:
+        p_pars = Parser(args[1], args[2])
+        p_pars.full_process()
 
 
 if __name__ == "__main__":
     print "starting..."
-    path_in = '/home/ise/NLP/oren_data/DATA'
-    path_out = '/home/ise/NLP/oren_data/out'
-    p_pars = Parser(path_in, path_out)
-    p_pars.constract_fix_json_dir()
-    p_pars.make_big_json('/home/ise/NLP/oren_data/out/sorted', '/home/ise/NLP/oren_data/out')
-    exit()
+    parser_command()
+    #path_in = '/home/ise/NLP/oren_data/DATA'
+    #path_out = '/home/ise/NLP/oren_data/out'
+    #path_big = '/home/ise/NLP/oren_data/out/big/big.json'
+    #########################
+    # Testing big function :
+    #build_trees(path_big)
+    ########################
+    #p_pars = Parser(path_in, path_out)
+    #p_pars.constract_fix_json_dir()
+    #p_pars.make_big_json('/home/ise/NLP/oren_data/out/sorted', '/home/ise/NLP/oren_data/out')
+    exit(0)
