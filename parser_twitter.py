@@ -195,7 +195,7 @@ class Parser:
             self.fix_json(file_i)
         self.get_all_files(self.out_dir)
         self.get_all_files(self.out_dir)
-        p_path = ht.mkdir_system(self.path_out, 'sorted')
+        p_path = ht.mkdir_system(self.out_dir, 'sorted')
         for x in self.files:
             self.sort_file(x, p_path)
         print "done !"
