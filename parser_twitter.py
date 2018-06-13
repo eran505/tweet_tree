@@ -251,6 +251,58 @@ class Parser:
         print "done !!"
         build_trees("{}/big.json".format(big_p))
 
+
+
+
+def build_tree_ram(f_name_big,long=5):
+    pass
+    ram_big = ["1", "1", [], 0, 0]
+    out_dir = '/'.join(str(f_name_big).split('/')[:-1])
+    lookup_dir = ht.mkdir_system(out_dir, 'lookup')
+    trees_dir = ht.mkdir_system(out_dir, 'trees')
+    log_dir = ht.mkdir_system(out_dir, 'log')
+    not_done = True
+    big_file = open('{}'.format(f_name_big), 'r')
+    dico_data = {}
+    start = True
+    with open(f_name_big,'r+') as f_big:
+        ram_big[2]=f_big.readlines()
+
+    while not_done:
+        cur_index = 0
+        cur_line = ram_big[2][cur_index]
+        cur_index+=1
+        if cur_line is None or len(cur_line) < 1:
+            break
+        end_not = True
+        while end_not:
+            arr_split_data = str(cur_line).split('@#@')
+            id_line = arr_split_data[0]
+            with open('{}/log.txt'.format(log_dir), 'a') as log_f:
+                log_f.write("{}\n".format(id_line))
+            json_line = arr_split_data[1]
+            dico_data[id_line] = cur_line
+            ans = _look_up(id_line, lookup_dir, long)
+            if ans is not None:
+                flush_tree(dico_data, lookup_dir, trees_dir, long, ans)
+                break
+            replay = get_replay(json_line)
+            if replay is None:
+                end_not = False
+                flush_tree(dico_data, lookup_dir, trees_dir, long)
+                dico_data = {}
+                continue
+            print "{}->{}".format(id_line, replay)
+            print "len: {} {}".format(len(id_line), len(replay))
+            replay_data = binary_search(replay, f_name_big, ram_big,True)
+            if replay_data is None:
+                flush_tree(dico_data, lookup_dir, trees_dir, long)
+                dico_data = {}
+                break
+            print "found !!!"
+            cur_line = replay_data
+
+
 def build_trees(f_name_big, long=5):
     """
     building the trees, by iterate over each record in the big file,
@@ -378,7 +430,7 @@ def _get_line(index, f_name, fill, ram):
     return num, line
 
 
-def binary_search(value, path_file, ram, ram_size=6000000000):
+def binary_search(value, path_file, ram, ram_size=6000000000,all=False):
     """
     ram[0] = min id
     ram[1] = max id

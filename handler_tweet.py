@@ -1,4 +1,4 @@
-import os, re
+import os, re,json
 
 
 def walk_rec(root, list_res, rec="", file_t=True, lv=-800, full=True):
@@ -75,5 +75,48 @@ def quicksort(array, begin=0, end=None):
     return _quicksort(array, begin, end)
 
 
+def json_tree(json_p,out):
+    '''
+    constract a tree out of a json file
+    :param json_p: path to the json file
+    :return: tree dict
+    '''
+    name = str(json_p).split('/')[-1]
+    if os.path.isfile(json_p) is False:
+        print "bad path"
+        return None
+    with open(json_p, 'r' ) as j_file:
+        arr = j_file.readlines()
+    d={}
+    for line in arr:
+        if line == '\n':
+            continue
+        split_data = str(line).split('@#@')
+        d[split_data[0]]=[get_replay(split_data[1])]
+    with open('{}/{}.txt'.format(out,name),'w') as f :
+        for ky in d.keys():
+            f.write('{}:{}'.format(ky,d[ky]))
+    print 'done'
+
+
+def get_replay(jsonstring):
+    """
+    Extracting replay id from the given json tweet data
+    :param jsonstring: (string)
+    :return: id (str) or None
+    """
+    replay_id = None
+    data_stream = json.loads(jsonstring)
+    if 'in_reply_to_status_id_str' in data_stream:
+        data_replay = data_stream['in_reply_to_status_id_str']
+        replay_id = str(data_replay)
+    return replay_id
+
+
+import sys
 if __name__ == "__main__":
+    args = sys.argv
+    if args[1] == 't':
+        json_tree(args[2],args[3])
+    exit()
     print '------handler-----'
