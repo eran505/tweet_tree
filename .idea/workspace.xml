@@ -53,11 +53,8 @@
       <file leaf-file-name="handler_tweet.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/handler_tweet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="89" column="8" lean-forward="true" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
-              <folding>
-                <element signature="e#2825#3285#0" />
-              </folding>
+            <state relative-caret-position="161">
+              <caret line="95" column="44" lean-forward="true" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -750,11 +747,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/handler_tweet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="89" column="8" lean-forward="true" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
-          <folding>
-            <element signature="e#2825#3285#0" />
-          </folding>
+        <state relative-caret-position="161">
+          <caret line="95" column="44" lean-forward="true" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
         </state>
       </provider>
     </entry>

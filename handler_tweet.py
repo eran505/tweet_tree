@@ -92,14 +92,15 @@ def json_tree(json_p,out):
         if line == '\n':
             continue
         split_data = str(line).split('@#@')
-        d[split_data[0]]=[get_replay(split_data[1])]
+        d[split_data[0]]=[get_replay(split_data[1]),get_replay(split_data[1],'text')]
     with open('{}/{}.txt'.format(out,name), 'a') as f :
         for ky in d.keys():
-            f.write('{}:{}'.format(ky,d[ky]))
+            f.write('{}@#@{}@#@{}'.format(ky,d[ky][0],d[ky][1]))
+            f.write('\n')
     print 'done'
 
 
-def get_replay(jsonstring):
+def get_replay(jsonstring, val='in_reply_to_status_id_str'):
     """
     Extracting replay id from the given json tweet data
     :param jsonstring: (string)
@@ -107,8 +108,8 @@ def get_replay(jsonstring):
     """
     replay_id = None
     data_stream = json.loads(jsonstring)
-    if 'in_reply_to_status_id_str' in data_stream:
-        data_replay = data_stream['in_reply_to_status_id_str']
+    if val in data_stream:
+        data_replay = data_stream[val]
         replay_id = str(data_replay)
     return replay_id
 
