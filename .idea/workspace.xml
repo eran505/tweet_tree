@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d739ee63-b558-41fc-9b03-19fa03aae1c7" name="Default" comment="" />
+    <list default="true" id="d739ee63-b558-41fc-9b03-19fa03aae1c7" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/parser_twitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_twitter.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +19,8 @@
       <file leaf-file-name="parser_twitter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parser_twitter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="249" column="46" selection-start-line="249" selection-start-column="39" selection-end-line="249" selection-end-column="46" />
+            <state relative-caret-position="-24">
+              <caret line="381" column="51" selection-start-line="381" selection-start-column="51" selection-end-line="381" selection-end-column="51" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#10069#10441#0" />
@@ -55,6 +57,7 @@
       <find>@#@</find>
       <find>binary_search</find>
       <find>_get_line</find>
+      <find>path_o</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -318,13 +321,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1431" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="2358" y="24" width="928" height="1056" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.093886465" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19005525" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32843652" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33837837" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -661,8 +664,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parser_twitter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="249" column="46" selection-start-line="249" selection-start-column="39" selection-end-line="249" selection-end-column="46" />
+        <state relative-caret-position="-24">
+          <caret line="381" column="51" selection-start-line="381" selection-start-column="51" selection-end-line="381" selection-end-column="51" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#10069#10441#0" />

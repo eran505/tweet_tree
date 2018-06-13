@@ -379,7 +379,7 @@ def _get_line(index, f_name, fill, ram):
     return num, line
 
 
-def binary_search(value, path_file, ram, ram_size=10000000):
+def binary_search(value, path_file, ram, ram_size=30000000):
     """
     ram[0] = min id
     ram[1] = max id
@@ -471,7 +471,11 @@ def parser_command():
     if len(args) < 2:
         print 'no path was given'
         print "python parser_twitter [path_zip] [path_out] [ram_size=10M]"
+        return
     else:
+        if args[1] == 'big':
+            build_trees(args[2])
+            return
         p_pars = Parser(args[1], args[2])
         p_pars.full_process()
 
