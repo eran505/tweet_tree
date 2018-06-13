@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d739ee63-b558-41fc-9b03-19fa03aae1c7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/handler_tweet.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler_tweet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser_twitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_twitter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="parser_twitter.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="parser_twitter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parser_twitter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="256" column="38" selection-start-line="256" selection-start-column="38" selection-end-line="256" selection-end-column="38" />
+            <state relative-caret-position="-807">
+              <caret line="312" column="18" selection-start-line="312" selection-start-column="18" selection-end-line="312" selection-end-column="18" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#8446#10211#0" />
@@ -51,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="handler_tweet.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="handler_tweet.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/handler_tweet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
+            <state relative-caret-position="108">
+              <caret line="89" column="8" lean-forward="true" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
               <folding>
                 <element signature="e#2825#3285#0" />
               </folding>
@@ -87,8 +86,8 @@
       <find>path_o</find>
       <find>ram[2]</find>
       <find>ram_big</find>
-      <find>repl</find>
       <find>\n</find>
+      <find>repl</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -99,8 +98,8 @@
       <list>
         <option value="$PROJECT_DIR$/modify_drive_files.sh" />
         <option value="$PROJECT_DIR$/parser_2015.py" />
-        <option value="$PROJECT_DIR$/handler_tweet.py" />
         <option value="$PROJECT_DIR$/parser_twitter.py" />
+        <option value="$PROJECT_DIR$/handler_tweet.py" />
       </list>
     </option>
   </component>
@@ -729,20 +728,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler_tweet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
-          <folding>
-            <element signature="e#2825#3285#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parser_twitter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="256" column="38" selection-start-line="256" selection-start-column="38" selection-end-line="256" selection-end-column="38" />
+        <state relative-caret-position="-807">
+          <caret line="312" column="18" selection-start-line="312" selection-start-column="18" selection-end-line="312" selection-end-column="18" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#8446#10211#0" />
@@ -755,6 +744,16 @@
             <element signature="e#13563#14019#0" />
             <element signature="e#14061#14704#0" />
             <element signature="e#15163#15504#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler_tweet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="89" column="8" lean-forward="true" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
+          <folding>
+            <element signature="e#2825#3285#0" />
           </folding>
         </state>
       </provider>

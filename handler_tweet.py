@@ -81,7 +81,7 @@ def json_tree(json_p,out):
     :param json_p: path to the json file
     :return: tree dict
     '''
-    name = str(json_p).split('/')[-1]
+    name = str(json_p).split('/')[-1][:-4]
     if os.path.isfile(json_p) is False:
         print "bad path"
         return None
@@ -93,7 +93,7 @@ def json_tree(json_p,out):
             continue
         split_data = str(line).split('@#@')
         d[split_data[0]]=[get_replay(split_data[1])]
-    with open('{}/{}.txt'.format(out,name),'w') as f :
+    with open('{}/{}.txt'.format(out,name), 'a') as f :
         for ky in d.keys():
             f.write('{}:{}'.format(ky,d[ky]))
     print 'done'
