@@ -240,7 +240,7 @@ class Parser:
         self.sort_to_big(self.files, big_dir)
 
     def full_process(self):
-        self.constract_fix_json_dir()
+        #self.constract_fix_json_dir()
         if self.out_dir[-1] == '/':
             sort_p = '{}sorted'.format(self.out_dir)
             big_p = '{}big'.format(self.out_dir)
