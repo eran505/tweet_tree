@@ -92,10 +92,10 @@ def json_tree(json_p,out):
         if line == '\n':
             continue
         split_data = str(line).split('@#@')
-        d[split_data[0]]=[get_replay(split_data[1]),get_replay(split_data[1],'text')]
+        d[split_data[0]]=get_replay(split_data[1])
     with open('{}/{}.txt'.format(out,name), 'a') as f :
         for ky in d.keys():
-            f.write('{}@#@{}@#@{}'.format(ky,d[ky][0],d[ky][1]))
+            f.write('{}@#@{}'.format(ky,d[ky][0]))
             f.write('\n')
     print 'done'
 
