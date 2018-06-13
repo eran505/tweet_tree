@@ -378,7 +378,7 @@ def _get_line(index, f_name, fill, ram):
     return num, line
 
 
-def binary_search(value, path_file, ram, ram_size=30000000):
+def binary_search(value, path_file, ram, ram_size=400000000):
     """
     ram[0] = min id
     ram[1] = max id
