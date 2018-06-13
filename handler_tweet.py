@@ -95,7 +95,7 @@ def json_tree(json_p,out):
         d[split_data[0]]=get_replay(split_data[1])
     with open('{}/{}.txt'.format(out,name), 'a') as f :
         for ky in d.keys():
-            f.write('{}@#@{}'.format(ky,d[ky][0]))
+            f.write('{}@#@{}'.format(ky,d[ky]))
             f.write('\n')
     print 'done'
 
