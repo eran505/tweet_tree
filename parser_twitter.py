@@ -378,7 +378,7 @@ def _get_line(index, f_name, fill, ram):
     return num, line
 
 
-def binary_search(value, path_file, ram, ram_size=20000000):
+def binary_search(value, path_file, ram, ram_size=30000000):
     """
     ram[0] = min id
     ram[1] = max id
@@ -424,6 +424,7 @@ def binary_search(value, path_file, ram, ram_size=20000000):
 
 def _fill_ram(ram, low, high, path, size):
     print "filling RAM....."
+    ram[2] = []
     f = open(path, 'r+')
     ram[3] = 0
     ram[4] = 0
@@ -474,9 +475,11 @@ def parser_command():
     else:
         if args[1] == 'big':
             build_trees(args[2])
+            print "done process all data"
             return
         p_pars = Parser(args[1], args[2])
         p_pars.full_process()
+        print "done process all data"
 
 
 if __name__ == "__main__":

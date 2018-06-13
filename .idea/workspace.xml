@@ -19,8 +19,8 @@
       <file leaf-file-name="parser_twitter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parser_twitter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="476" column="18" selection-start-line="476" selection-start-column="18" selection-end-line="476" selection-end-column="18" />
+            <state relative-caret-position="251">
+              <caret line="430" column="20" lean-forward="true" selection-start-line="430" selection-start-column="20" selection-end-line="430" selection-end-column="20" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#10069#10441#0" />
@@ -29,8 +29,6 @@
                 <element signature="e#11723#11814#0" />
                 <element signature="e#11864#12281#0" />
                 <element signature="e#12350#13518#0" />
-                <element signature="e#13563#14019#0" />
-                <element signature="e#14061#14704#0" />
               </folding>
             </state>
           </provider>
@@ -58,6 +56,7 @@
       <find>binary_search</find>
       <find>_get_line</find>
       <find>path_o</find>
+      <find>ram[2]</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -367,8 +366,6 @@
             <element signature="e#11723#11814#0" />
             <element signature="e#11864#12281#0" />
             <element signature="e#12350#13518#0" />
-            <element signature="e#13563#14019#0" />
-            <element signature="e#14061#14704#0" />
           </folding>
         </state>
       </provider>
@@ -394,8 +391,6 @@
             <element signature="e#11723#11814#0" />
             <element signature="e#11864#12281#0" />
             <element signature="e#12350#13518#0" />
-            <element signature="e#13563#14019#0" />
-            <element signature="e#14061#14704#0" />
           </folding>
         </state>
       </provider>
@@ -664,8 +659,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parser_twitter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="476" column="18" selection-start-line="476" selection-start-column="18" selection-end-line="476" selection-end-column="18" />
+        <state relative-caret-position="251">
+          <caret line="430" column="20" lean-forward="true" selection-start-line="430" selection-start-column="20" selection-end-line="430" selection-end-column="20" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#10069#10441#0" />
@@ -674,8 +669,6 @@
             <element signature="e#11723#11814#0" />
             <element signature="e#11864#12281#0" />
             <element signature="e#12350#13518#0" />
-            <element signature="e#13563#14019#0" />
-            <element signature="e#14061#14704#0" />
           </folding>
         </state>
       </provider>
