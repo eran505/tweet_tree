@@ -263,14 +263,13 @@ def build_trees(f_name_big, long=5):
     lookup_dir = ht.mkdir_system(out_dir, 'lookup')
     trees_dir = ht.mkdir_system(out_dir, 'trees')
     log_dir = ht.mkdir_system(out_dir, 'log')
-    user_dir = ht.mkdir_system(out_dir, 'usr')
     not_done = True
     big_file = open('{}'.format(f_name_big), 'r')
     dico_data = {}
     start = True
     while not_done:
         if start:
-            #for x in range(30000):
+            # for x in range(30000):
             #    cur_line = big_file.readline()
             start = False
         cur_line = big_file.readline()
@@ -379,7 +378,7 @@ def _get_line(index, f_name, fill, ram):
     return num, line
 
 
-def binary_search(value, path_file, ram, ram_size=30000000):
+def binary_search(value, path_file, ram, ram_size=20000000):
     """
     ram[0] = min id
     ram[1] = max id
