@@ -617,6 +617,14 @@ def loader(file_name):
     #    print val
     return d_memebers
 
+def sort_member_by_size(d_mem):
+    '''
+    sort by size
+    :return:
+    '''
+    val_list = d_mem.values()
+    new_list
+
 def flush_to_files(d_mem,json_hash,out_p):
     for ky,list_memebers in d_mem.iteritems():
         data=[]
@@ -640,16 +648,21 @@ def ram_bulider(f_name_big):
     trees_dir = ht.mkdir_system(out_dir, 'trees')
     log_dir = ht.mkdir_system(out_dir, 'log')
     d_mem = loader(f_name_big)
-    loger(d_mem,log_dir,'mem_d.txt')
+    list_val = d_mem.values()
+    list_val.sort(key=len)
+    loger(list_val,log_dir,'mem_d.txt',False,True)
     d_json = get_hash_json(f_name_big)
     flush_to_files(d_mem, d_json, trees_dir)
 
-def loger(obj,path,f_name,is_dict=True):
+def loger(obj,path,f_name,is_dict=True,is_list=False):
     if is_dict:
         with open('{}/{}'.format(path,f_name),'a') as log_f:
             for ky,val in obj.iteritems():
                 log_f.write('{} : {} \n'.format(ky,val))
-
+    if is_list:
+        with open('{}/{}'.format(path,f_name),'a') as log_f:
+            for val in obj:
+                log_f.write('{} \n'.format(val))
 
 if __name__ == "__main__":
     #cut_big('/home/ise/NLP/oren_data/out/big/big.json')
