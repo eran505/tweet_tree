@@ -613,8 +613,16 @@ def loader(file_name):
             if rep_id is not None:
                 d_tree[rep_id]=tree_id
                 d_memebers[tree_id].append(rep_id)
-    #for val in d_memebers.values():
-    #    print val
+
+    d_num={}
+    for key,val in d_memebers.iteritems():
+        size_v = len(val)
+        if size_v in d_num:
+            d_num[size_v].append(key)
+        else:
+            d_num[size_v]=[key]
+    for ky in d_num:
+        print '{} | {}'.format(ky,len(d_num[ky]))
     return d_memebers
 
 def sort_member_by_size(d_mem):
