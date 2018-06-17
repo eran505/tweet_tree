@@ -547,7 +547,7 @@ def mapcount(filename):
         lines += 1
     return lines
 
-def cut_big(p_path,s=30000,num=30000,lim=10000):
+def cut_big(p_path,s=30000,num=5000,lim=10000):
     size = mapcount(p_path)
     print 'size=', size
     path_rel = '/'.join(str(p_path).split('/')[:-1])
@@ -623,7 +623,6 @@ def sort_member_by_size(d_mem):
     :return:
     '''
     val_list = d_mem.values()
-    new_list
 
 def flush_to_files(d_mem,json_hash,out_p):
     for ky,list_memebers in d_mem.iteritems():
@@ -649,10 +648,14 @@ def ram_bulider(f_name_big):
     log_dir = ht.mkdir_system(out_dir, 'log')
     d_mem = loader(f_name_big)
     list_val = d_mem.values()
-    list_val.sort(key=len)
-    loger(list_val,log_dir,'mem_d.txt',False,True)
+    str_list = [str(x) for x in list_val]
+    str_list.sort(key=len, reverse=True)
+    loger(str_list ,log_dir,'mem_d.txt',False,True)
     d_json = get_hash_json(f_name_big)
     flush_to_files(d_mem, d_json, trees_dir)
+
+def sort_list():
+    pass
 
 def loger(obj,path,f_name,is_dict=True,is_list=False):
     if is_dict:
@@ -667,7 +670,7 @@ def loger(obj,path,f_name,is_dict=True,is_list=False):
 if __name__ == "__main__":
     #cut_big('/home/ise/NLP/oren_data/out/big/big.json')
     print "Starting..."
-    #arg = ['py', 'big', '/home/ise/NLP/oren_data/out/big/cut_big.json']
+    #arg = ['py', 'ram', '/home/ise/NLP/oren_data/out/big/cut_big.json']
     #loader('/home/ise/NLP/oren_data/out/big/cut_big.json')
     #exit()
     parser_command()
