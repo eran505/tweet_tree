@@ -4,6 +4,7 @@ from sys import exit
 import handler_tweet as ht
 import csv
 import hashlib
+import mmap
 
 import sys
 
@@ -346,7 +347,6 @@ def build_trees(f_name_big, long=5):
                 dico_data = {}
                 continue
             print "{}->{}".format(id_line, replay)
-            print "len: {} {}".format(len(id_line), len(replay))
             replay_data = binary_search(replay, f_name_big, ram_big)
             if replay_data is None:
                 flush_tree(dico_data, lookup_dir, trees_dir, long)
@@ -430,7 +430,7 @@ def _get_line(index, f_name, fill, ram):
     return num, line
 
 
-def binary_search(value, path_file, ram, ram_size=6000000000,all=False):
+def binary_search(value, path_file, ram, ram_size=200000,all=False):
     """
     ram[0] = min id
     ram[1] = max id
@@ -518,33 +518,131 @@ def binary_search_ram(ram, value):
             return True, None
     return False, None
 
-def parser_command():
-    args = sys.argv
-    if len(args) < 2:
+def parser_command(arg=None):
+    if arg is None:
+        arg = sys.argv
+    if len(arg) < 2:
         print 'no path was given'
         print "python parser_twitter [path_zip] [path_out] [ram_size=10M]"
         return
     else:
-        if args[1] == 'big':
-            build_trees(args[2])
+        if arg[1] == 'big':
+            build_trees(arg[2])
             print "done process all data"
             return
-        p_pars = Parser(args[1], args[2])
+        if arg[1] =='ram':
+            ram_bulider(arg[2])
+            return
+        p_pars = Parser(arg[1], arg[2])
         p_pars.full_process()
         print "done process all data"
 
 
+def mapcount(filename):
+    f = open(filename, "r+")
+    buf = mmap.mmap(f.fileno(), 0)
+    lines = 0
+    readline = buf.readline
+    while readline():
+        lines += 1
+    return lines
+
+def cut_big(p_path,s=30000,num=30000,lim=10000):
+    size = mapcount(p_path)
+    print 'size=', size
+    path_rel = '/'.join(str(p_path).split('/')[:-1])
+    data_line=[]
+    ctr=-1
+    with open(p_path,'r+') as f:
+        for line in f:
+            ctr+=1
+            if ctr >= s:
+                data_line.append(line)
+            if s+num<ctr:
+                break
+            if lim<len(data_line):
+                append_data_file('{}/cut_big.json'.format(path_rel),data_line)
+                data_line=[]
+        if len(data_line)>0:
+            append_data_file('{}/cut_big.json'.format(path_rel), data_line)
+
+    exit()
+
+
+def append_data_file(path,arr_data):
+    with open(path,'a') as f:
+        for item in arr_data:
+            f.write(item+'\n')
+
+def get_hash_json(big_p):
+    d={}
+    with open(big_p,'r+') as big_f:
+        for line in big_p:
+            split_arr = str(line).split('@#@')
+            d[split_arr[0]] = split_arr[1]
+    return d
+
+def loader(file_name):
+    '''
+    :param num_line:
+    :return:
+    '''
+    d_tree={}
+    d_memebers={}
+    with open(file_name,'r+') as f_big :
+        for line in f_big:
+            if line == '\n':
+                continue
+            id_line = str(line).split('@#@')[0]
+            rep_id = get_replay(str(line).split('@#@')[1])
+            if id_line in d_tree :
+                tree_id = d_tree[id_line]
+            else:
+                tree_id = id_line
+            d_tree[id_line]=tree_id
+
+            if tree_id not in d_memebers:
+                d_memebers[tree_id]=[]
+            d_memebers[tree_id].append(id_line)
+            if rep_id is not None:
+                d_tree[rep_id]=tree_id
+                d_memebers[tree_id].append(rep_id)
+    #for val in d_memebers.values():
+    #    print val
+    return d_memebers
+
+def flush_to_files(d_mem,json_hash,out_p):
+    for ky,list_memebers in d_mem.iteritems():
+        data=[]
+        for mem in list_memebers:
+            data.append(json_hash[mem])
+        dump(data,out_p,ky,True)
+
+
+def dump(data,path,f_name,is_list=False):
+    with open('{}/{}'.format(path,f_name),'a') as f:
+        if is_list:
+            for item in data:
+                f.write(item+'\n')
+        else:
+            f.write(data + '\n')
+
+
+def ram_bulider(f_name_big):
+    out_dir = '/'.join(str(f_name_big).split('/')[:-1])
+    lookup_dir = ht.mkdir_system(out_dir, 'lookup')
+    trees_dir = ht.mkdir_system(out_dir, 'trees')
+    log_dir = ht.mkdir_system(out_dir, 'log')
+    d_mem = loader(f_name_big)
+    d_json = get_hash_json(f_name_big)
+    flush_to_files(d_mem, d_json, trees_dir)
+
 if __name__ == "__main__":
-    print "starting..."
+    #cut_big('/home/ise/NLP/oren_data/out/big/big.json')
+    print "Starting..."
+    #arg = ['py', 'big', '/home/ise/NLP/oren_data/out/big/cut_big.json']
+    #loader('/home/ise/NLP/oren_data/out/big/cut_big.json')
+    #exit()
     parser_command()
-    #path_in = '/home/ise/NLP/oren_data/DATA'
-    #path_out = '/home/ise/NLP/oren_data/out'
-    #path_big = '/home/ise/NLP/oren_data/out/big/big.json'
-    #########################
-    # Testing big function :
-    #build_trees(path_big)
-    ########################
-    #p_pars = Parser(path_in, path_out)
-    #p_pars.constract_fix_json_dir()
-    #p_pars.make_big_json('/home/ise/NLP/oren_data/out/sorted', '/home/ise/NLP/oren_data/out')
+    print "Exiting..."
     exit(0)
