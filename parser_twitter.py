@@ -578,6 +578,8 @@ def get_hash_json(big_p):
     d={}
     with open(big_p,'r+') as big_f:
         for line in big_p:
+            if line =='\n':
+                continue
             split_arr = str(line).split('@#@')
             d[split_arr[0]] = split_arr[1]
     return d
@@ -589,8 +591,12 @@ def loader(file_name):
     '''
     d_tree={}
     d_memebers={}
+    size = _get_size_file(file_name)
+
     with open(file_name,'r+') as f_big :
         for line in f_big:
+            print size
+            size = size - 1
             if line == '\n':
                 continue
             id_line = str(line).split('@#@')[0]
@@ -634,8 +640,16 @@ def ram_bulider(f_name_big):
     trees_dir = ht.mkdir_system(out_dir, 'trees')
     log_dir = ht.mkdir_system(out_dir, 'log')
     d_mem = loader(f_name_big)
+    loger(d_mem,log_dir,'mem_d.txt')
     d_json = get_hash_json(f_name_big)
     flush_to_files(d_mem, d_json, trees_dir)
+
+def loger(obj,path,f_name,is_dict=True):
+    if is_dict:
+        with open('{}/{}'.format(path,f_name),'a') as log_f:
+            for ky,val in obj.iteritems():
+                log_f.write('{} : {} \n'.format(ky,val))
+
 
 if __name__ == "__main__":
     #cut_big('/home/ise/NLP/oren_data/out/big/big.json')
