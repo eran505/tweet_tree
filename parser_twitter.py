@@ -577,7 +577,7 @@ def append_data_file(path,arr_data):
 def get_hash_json(big_p):
     d={}
     with open(big_p,'r+') as big_f:
-        for line in big_p:
+        for line in big_f:
             if line =='\n':
                 continue
             split_arr = str(line).split('@#@')
@@ -605,14 +605,30 @@ def loader(file_name):
                 tree_id = d_tree[id_line]
             else:
                 tree_id = id_line
-            d_tree[id_line]=tree_id
-
+                d_tree[id_line] = tree_id
+            if rep_id in d_tree:
+                tree_rep_id = d_tree[rep_id]
+            else:
+                tree_rep_id = tree_id
+            if tree_rep_id != tree_id and tree_rep_id is not None:
+                # change all the members of the rep to new id
+                list_rep_mem = d_memebers[tree_rep_id]
+                if tree_id not in d_memebers:
+                    d_memebers[tree_id] = []
+                for mem in list_rep_mem:
+                    if mem=='None':
+                        continue
+                    d_tree[mem]=tree_id
+                    _append(d_memebers[tree_id],mem)
+                del d_memebers[tree_rep_id]
+                _append(d_memebers[tree_id],id_line)
+                continue
             if tree_id not in d_memebers:
-                d_memebers[tree_id]=[]
-            d_memebers[tree_id].append(id_line)
-            if rep_id is not None:
+                d_memebers[tree_id] = []
+            _append(d_memebers[tree_id],id_line)
+            if rep_id !='None':
                 d_tree[rep_id]=tree_id
-                d_memebers[tree_id].append(rep_id)
+                _append(d_memebers[tree_id],rep_id)
 
     d_num={}
     for key,val in d_memebers.iteritems():
@@ -625,6 +641,13 @@ def loader(file_name):
         print '{} | {}'.format(ky,len(d_num[ky]))
     return d_memebers
 
+
+def _append(target_list , item):
+    for x in target_list:
+        if x == item:
+            return
+    target_list.append(item)
+
 def sort_member_by_size(d_mem):
     '''
     sort by size
@@ -636,12 +659,13 @@ def flush_to_files(d_mem,json_hash,out_p):
     for ky,list_memebers in d_mem.iteritems():
         data=[]
         for mem in list_memebers:
-            data.append(json_hash[mem])
+            if mem in json_hash:
+                data.append(json_hash[mem])
         dump(data,out_p,ky,True)
 
 
 def dump(data,path,f_name,is_list=False):
-    with open('{}/{}'.format(path,f_name),'a') as f:
+    with open('{}/{}.txt'.format(path,f_name),'a') as f:
         if is_list:
             for item in data:
                 f.write(item+'\n')
@@ -678,7 +702,9 @@ def loger(obj,path,f_name,is_dict=True,is_list=False):
 if __name__ == "__main__":
     #cut_big('/home/ise/NLP/oren_data/out/big/big.json')
     print "Starting..."
-    #arg = ['py', 'ram', '/home/ise/NLP/oren_data/out/big/cut_big.json']
+    p_file = '/home/ise/NLP/tweet_tree/json_files/808503113808232453.txt'
+    big_cut = '/home/ise/NLP/oren_data/out/big/cut_big.json'
+    arg = ['py', 'ram', big_cut ]
     #loader('/home/ise/NLP/oren_data/out/big/cut_big.json')
     #exit()
     parser_command()
