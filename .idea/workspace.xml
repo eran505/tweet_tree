@@ -39,12 +39,11 @@
           <file leaf-file-name="tree_twitt.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/tree_twitt.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="244">
-                  <caret line="63" column="75" selection-start-line="63" selection-start-column="75" selection-end-line="63" selection-end-column="75" />
+                <state relative-caret-position="184">
+                  <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
                   <folding>
                     <element signature="e#0#18#0" expanded="true" />
                     <element signature="e#641#956#0" />
-                    <element signature="e#2599#2723#0" />
                     <element signature="e#3383#3583#0" />
                   </folding>
                 </state>
@@ -775,12 +774,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tree_twitt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="63" column="75" selection-start-line="63" selection-start-column="75" selection-end-line="63" selection-end-column="75" />
+        <state relative-caret-position="184">
+          <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#641#956#0" />
-            <element signature="e#2599#2723#0" />
             <element signature="e#3383#3583#0" />
           </folding>
         </state>

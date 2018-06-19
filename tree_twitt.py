@@ -161,6 +161,9 @@ def get_stat(dir_tree, flag=False, num=7):
     all_tree = ht.walk_rec(dir_tree, [], '.txt')
     d_list = []
     for tree_file in all_tree:
+        print '{}'.format(tree_file)
+        with open('{}/log_stat.txt'.format(out) ,'a') as f:
+            f.write(name+'\n')
         if flag == True:
             ans = get_hash_json_size(tree_file)
             if ans < num:
