@@ -179,7 +179,7 @@ def get_stat(dir_tree, flag=False, num=7):
 
 if __name__ == "__main__":
     args = sys.argv
-    args = ['','t','/home/ise/NLP/tran/929530517468471296.txt']
+    #args = ['','t','/home/ise/NLP/tran/929530517468471296.txt']
     if args[1] == 't':
         dico_i = json_tree(args[2])
     if args[1] == 'stat':
