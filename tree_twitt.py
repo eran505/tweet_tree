@@ -59,6 +59,9 @@ def json_tree(json_p):
             msg = "[Error] the id is in the dict already"
             raise Exception(msg)
         d[twet_id] = TweetNode(twet_id, rep_id)
+        for ky in d.keys():
+            if d[ky].in_replay_to not in d:
+                d[d[ky].in_replay_to]=TweetNode(d[ky].in_replay_to, 'None')
     for ky in d.keys():
         node_obj = d[ky]
         if node_obj.in_replay_to != 'None':
