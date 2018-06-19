@@ -160,6 +160,8 @@ def get_stat(dir_tree, flag=False, num=7):
     out = '/'.join(str(dir_tree).split('/')[:-1])
     all_tree = ht.walk_rec(dir_tree, [], '.txt')
     d_list = []
+    if os.path.isfile('{}/log_stat.txt'.format(out)):
+        os.system('rm {}/log_stat.txt'.format(out))
     for tree_file in all_tree:
         print '{}'.format(tree_file)
         name = str(tree_file).split('/')[-1][:-4]
