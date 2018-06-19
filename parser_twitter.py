@@ -533,6 +533,9 @@ def parser_command(arg=None):
         if arg[1] =='ram':
             ram_bulider(arg[2])
             return
+        if arg[1]=='ana':
+            analysis(arg[2])
+            return
         p_pars = Parser(arg[1], arg[2])
         p_pars.full_process()
         print "done process all data"
@@ -699,6 +702,21 @@ def loger(obj,path,f_name,is_dict=True,is_list=False):
             for val in obj:
                 log_f.write('{} \n'.format(val))
 
+
+def analysis(dir_tree):
+    list_tree = ht.walk_rec(dir_tree,[],'.txt')
+    d_list=[]
+    out = '/'.join(str(dir_tree).split('/'[:-1]))
+    for x in list_tree:
+        name = str(x).split('/')[-1][:-4]
+        d = get_hash_json(x)
+        size = len(d)
+        d_list.append({'name':name,'nodes':size})
+    df = pd.DataFrame(d_list)
+    df.to_csv('{}/size.csv'.format(out))
+    print "done !"
+
+
 if __name__ == "__main__":
     #cut_big('/home/ise/NLP/oren_data/out/big/big.json')
     print "Starting..."
@@ -707,6 +725,6 @@ if __name__ == "__main__":
     arg = ['py', 'ram', big_cut ]
     #loader('/home/ise/NLP/oren_data/out/big/cut_big.json')
     #exit()
-    parser_command()
+    parser_command(     )
     print "Exiting..."
     exit(0)
