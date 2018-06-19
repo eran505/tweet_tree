@@ -706,7 +706,7 @@ def loger(obj,path,f_name,is_dict=True,is_list=False):
 def analysis(dir_tree):
     list_tree = ht.walk_rec(dir_tree,[],'.txt')
     d_list=[]
-    out = '/'.join(str(dir_tree).split('/'[:-1]))
+    out = '/'.join(str(dir_tree).split('/')[:-1])
     for x in list_tree:
         name = str(x).split('/')[-1][:-4]
         d = get_hash_json(x)
@@ -716,7 +716,7 @@ def analysis(dir_tree):
     df.to_csv('{}/size.csv'.format(out))
     print "done !"
 
-
+import pandas as pd
 if __name__ == "__main__":
     #cut_big('/home/ise/NLP/oren_data/out/big/big.json')
     print "Starting..."
