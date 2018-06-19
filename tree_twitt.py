@@ -162,13 +162,13 @@ def get_stat(dir_tree, flag=False, num=7):
     d_list = []
     for tree_file in all_tree:
         print '{}'.format(tree_file)
+        name = str(tree_file).split('/')[-1][:-4]
         with open('{}/log_stat.txt'.format(out) ,'a') as f:
-            f.write(name+'\n')
+            f.write('{}.txt \n'.format(name))
         if flag == True:
             ans = get_hash_json_size(tree_file)
             if ans < num:
                 continue
-        name = str(tree_file).split('/')[-1][:-4]
         dico_i = json_tree(tree_file)
         dico_i['tree_name'] = name
         d_list.append(dico_i)
