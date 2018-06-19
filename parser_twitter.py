@@ -587,6 +587,17 @@ def get_hash_json(big_p):
             d[split_arr[0]] = split_arr[1]
     return d
 
+
+def get_hash_json_size(big_p):
+    d={}
+    size = 0
+    with open(big_p,'r+') as big_f:
+        for line in big_f:
+            if line =='\n':
+                continue
+            size = size +1
+    return size
+
 def loader(file_name):
     '''
     :param num_line:
@@ -709,8 +720,7 @@ def analysis(dir_tree):
     out = '/'.join(str(dir_tree).split('/')[:-1])
     for x in list_tree:
         name = str(x).split('/')[-1][:-4]
-        d = get_hash_json(x)
-        size = len(d)
+        size = get_hash_json_size(x)
         d_list.append({'name':name,'nodes':size})
     df = pd.DataFrame(d_list)
     df.to_csv('{}/size.csv'.format(out))
