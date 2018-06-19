@@ -59,9 +59,9 @@ def json_tree(json_p):
             msg = "[Error] the id is in the dict already"
             raise Exception(msg)
         d[twet_id] = TweetNode(twet_id, rep_id)
-        for ky in d.keys():
-            if d[ky].in_replay_to not in d:
-                d[d[ky].in_replay_to]=TweetNode(d[ky].in_replay_to, 'None')
+    for ky in d.keys():
+        if d[ky].in_replay_to not in d and d[ky].in_replay_to != 'None':
+            d[d[ky].in_replay_to]=TweetNode(d[ky].in_replay_to, 'None')
     for ky in d.keys():
         node_obj = d[ky]
         if node_obj.in_replay_to != 'None':
@@ -179,9 +179,9 @@ def get_stat(dir_tree, flag=False, num=7):
 
 if __name__ == "__main__":
     args = sys.argv
-    # args = ['','stat','/home/ise/NLP/tran','t',5]
+    args = ['','t','/home/ise/NLP/tran/929530517468471296.txt']
     if args[1] == 't':
-        dico_i = json_tree(args[2], args[3])
+        dico_i = json_tree(args[2])
     if args[1] == 'stat':
         if len(args) == 3:
             get_stat(args[2])
