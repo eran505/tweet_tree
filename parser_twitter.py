@@ -539,7 +539,8 @@ def parser_command(arg=None):
             big_path = '{}/out/big/big.json'
             ram_bulider(big_path)
             analysis('{}/out/big/trees'.format(out))
-        print "done process all data"
+            print "done process all data"
+        print "-----------"*10
 
 
 def mapcount(filename):
@@ -738,6 +739,6 @@ if __name__ == "__main__":
     arg = ['',DATA_path]
     #loader('/home/ise/NLP/oren_data/out/big/cut_big.json')
     #exit()
-    parser_command(arg)
+    parser_command()
     print "Exiting..."
     exit(0)
