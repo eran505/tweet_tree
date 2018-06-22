@@ -607,12 +607,13 @@ def loader(file_name):
     '''
     d_tree={}
     d_memebers={}
-    size = _get_size_file(file_name)
-
+    size_s = _get_size_file(file_name)
+    size_s = float(size_s)
+    ctr_size = 0
     with open(file_name,'r+') as f_big :
         for line in f_big:
-            print size
-            size = size - 1
+            print "{}%".format(ctr_size/size_s * 100)
+            ctr_size = ctr_size + 1
             if line == '\n':
                 continue
             id_line = str(line).split('@#@')[0]
