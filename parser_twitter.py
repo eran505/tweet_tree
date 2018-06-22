@@ -532,9 +532,9 @@ def parser_command(arg=None):
             analysis(arg[2])
             return
         if arg[1] == 'full':
-            rel_path = '/'.join(str(arg[1]).split('/')[:-1])
+            rel_path = '/'.join(str(arg[2]).split('/')[:-1])
             out = ht.mkdir_system(rel_path,'out')
-            p_pars = Parser(arg[1], out)
+            p_pars = Parser(arg[2], out)
             p_pars.full_process()
             big_path = '{}/out/big/big.json'
             ram_bulider(big_path)
