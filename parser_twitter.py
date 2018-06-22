@@ -536,9 +536,9 @@ def parser_command(arg=None):
             out = ht.mkdir_system(rel_path,'out')
             p_pars = Parser(arg[2], out)
             p_pars.full_process()
-            big_path = '{}/out/big/big.json'
+            big_path = '{}/big/big.json'.format(out)
             ram_bulider(big_path)
-            analysis('{}/out/big/trees'.format(out))
+            analysis('{}/big/trees'.format(out))
             print "done process all data"
         print "-----------"*10
 
