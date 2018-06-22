@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d739ee63-b558-41fc-9b03-19fa03aae1c7" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser_twitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_twitter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tree_twitt.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree_twitt.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,36 +18,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="parser_2015.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parser_2015.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="11" selection-start-line="11" selection-end-line="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parser_twitter.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="parser_twitter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parser_twitter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="590" selection-start-line="590" selection-end-line="598" selection-end-column="15" />
+            <state relative-caret-position="598">
+              <caret line="540" column="33" lean-forward="true" selection-start-line="540" selection-start-column="33" selection-end-line="540" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tree_twitt.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tree_twitt.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tree_twitt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="73" column="23" lean-forward="true" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#1593#2048#0" />
-                <element signature="e#641#956#0" />
-                <element signature="e#2899#3352#0" />
-                <element signature="e#3383#3583#0" />
-              </folding>
+            <state relative-caret-position="3120">
+              <caret line="211" column="4" selection-start-line="211" selection-start-column="4" selection-end-line="211" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -79,6 +68,8 @@
       <find>in_re</find>
       <find>in</find>
       <find>comment</find>
+      <find>decompress_file</find>
+      <find>constract_fix_json_dir</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -90,24 +81,23 @@
         <option value="$PROJECT_DIR$/modify_drive_files.sh" />
         <option value="$PROJECT_DIR$/parser_2015.py" />
         <option value="$PROJECT_DIR$/json_files/log/mem_d.txt" />
-        <option value="$PROJECT_DIR$/parser_twitter.py" />
         <option value="$PROJECT_DIR$/handler_tweet.py" />
         <option value="$PROJECT_DIR$/tree_twitt.py" />
+        <option value="$PROJECT_DIR$/parser_twitter.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="65" />
+    <option name="x" value="1400" />
     <option name="y" value="24" />
-    <option name="width" value="1301" />
-    <option name="height" value="772" />
+    <option name="width" value="1299" />
+    <option name="height" value="736" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -119,6 +109,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -137,7 +128,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tree_twitt">
+  <component name="RunManager" selected="Python.parser_twitter">
     <configuration name="handler_tweet" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="tweet_tree" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -382,8 +373,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.tree_twitt" />
         <item itemvalue="Python.parser_twitter" />
+        <item itemvalue="Python.tree_twitt" />
         <item itemvalue="Python.pydevd" />
         <item itemvalue="Python.parser_2015" />
         <item itemvalue="Python.handler_tweet" />
@@ -404,19 +395,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
+    <frame x="1431" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13458529" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12117904" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32917318" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21091291" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39937598" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.41761827" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -431,10 +422,55 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="94" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/parser_twitter.py</url>
+          <line>247</line>
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="95" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/parser_twitter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8730">
+          <caret line="590" selection-start-line="590" selection-end-line="598" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tree_twitt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2280">
+          <caret line="155" column="37" selection-start-line="155" selection-start-column="37" selection-end-line="155" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser_2015.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser_twitter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8850">
+          <caret line="590" selection-start-line="590" selection-end-line="598" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tree_twitt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2535">
+          <caret line="169" column="24" lean-forward="true" selection-start-line="169" selection-start-column="24" selection-end-line="169" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/parser_twitter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10455">
@@ -448,9 +484,6 @@
           <caret line="75" selection-start-line="75" selection-end-line="75" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parser_2015.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/parser_twitter.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -472,9 +505,6 @@
           <caret line="268" lean-forward="true" selection-start-line="268" selection-end-line="268" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parser_twitter.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/parser_2015.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -714,12 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/workers.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/twitter_api.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/json_files/808503113808232453.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-405" />
@@ -747,23 +771,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parser_twitter.py">
+    <entry file="file://$PROJECT_DIR$/tree_twitt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="590" selection-start-line="590" selection-end-line="598" selection-end-column="15" />
+        <state relative-caret-position="3120">
+          <caret line="211" column="4" selection-start-line="211" selection-start-column="4" selection-end-line="211" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tree_twitt.py">
+    <entry file="file://$PROJECT_DIR$/parser_twitter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="73" column="23" lean-forward="true" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+        <state relative-caret-position="598">
+          <caret line="540" column="33" lean-forward="true" selection-start-line="540" selection-start-column="33" selection-end-line="540" selection-end-column="33" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#1593#2048#0" />
-            <element signature="e#641#956#0" />
-            <element signature="e#2899#3352#0" />
-            <element signature="e#3383#3583#0" />
+            <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>

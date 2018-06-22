@@ -21,10 +21,15 @@ class TweetNode():
         return "<ID:%s , in_replay_to:%s>" % (self.id, self.in_replay_to)
 
 
-def get_hash_json_size(big_p):
+def get_hash_json_size(file_path):
+    '''
+    get the size of json var in a file
+    :param big_p: path to the file
+    :return:  ( int ) size
+    '''
     d = {}
     size = 0
-    with open(big_p, 'r+') as big_f:
+    with open(file_path, 'r+') as big_f:
         for line in big_f:
             if line == '\n':
                 continue
@@ -78,6 +83,11 @@ def json_tree(json_p):
 
 
 def find_root(dict_tree):
+    '''
+    finding the root of the given tree
+    :param dict_tree:
+    :return:
+    '''
     set_father = set()
     for ky in dict_tree.keys():
         first_element = dict_tree[ky]
@@ -109,23 +119,29 @@ def get_filed(jsonstring, val='in_reply_to_status_id_str'):
 
 
 def get_level(root):
+    '''
+    get the stat of each tree
+    :param root: root node
+    :return: dict
+    '''
     d = {}
     data_lv = []
     rec_path(root, 0, data_lv)
-    avg = reduce(lambda x, y: x + y, data_lv) / len(data_lv)
+    num_of_leaf = len(data_lv)
+    avg = reduce(lambda x, y: x + y, data_lv) / float(len(data_lv))
     highest = max(data_lv)
-    d['max_lv'] = highest
-    d['avg_lv'] = avg
-    d['med_lv'] = median(data_lv)
+    d['num_leaf']=num_of_leaf
+    d['max_depth'] = highest
+    d['avg_depth'] = avg
+    d['med_depth'] = median(data_lv)
     data_lv = []
     rec_comment(root, data_lv)
-    avg = reduce(lambda x, y: x + y, data_lv) / len(data_lv)
+    avg = reduce(lambda x, y: x + y, data_lv) / float(len(data_lv))
     highest = max(data_lv)
-    d['max_comment'] = highest
-    d['avg_comment'] = avg
-    d['med_comment'] = median(data_lv)
+    d['max_branch'] = highest
+    d['avg_branch'] = avg
+    d['med_branch'] = median(data_lv)
     return d
-
 
 def rec_comment(node, data):
     if node.comment is None:
@@ -146,6 +162,11 @@ def rec_path(node, lv, data):
 
 
 def median(lst):
+    '''
+    get the median in a list
+    :param lst: list
+    :return: var
+    '''
     sortedLst = sorted(lst)
     lstLen = len(lst)
     index = (lstLen - 1) // 2
@@ -157,6 +178,13 @@ def median(lst):
 
 
 def get_stat(dir_tree, flag=False, num=7):
+    '''
+    This functopn go over all the tree in the given dir and output statistic about them
+    :param dir_tree: dir path (str)
+    :param flag: limit the size of the tree e.g. only trees that contains 3 or more nodes will be processed (True/False)
+    :param num: the limit node in the tree (int)
+    :return: None
+    '''
     out = '/'.join(str(dir_tree).split('/')[:-1])
     all_tree = ht.walk_rec(dir_tree, [], '.txt')
     d_list = []
@@ -179,9 +207,9 @@ def get_stat(dir_tree, flag=False, num=7):
     print "---> done!!!"
 
 
-if __name__ == "__main__":
+def command_parser():
     args = sys.argv
-    #args = ['','t','/home/ise/NLP/tran/929530517468471296.txt']
+    ##args = ['','stat','/home/ise/NLP/tran']
     if args[1] == 't':
         dico_i = json_tree(args[2])
     if args[1] == 'stat':
@@ -197,4 +225,8 @@ if __name__ == "__main__":
                 get_stat(args[2], True, int(args[4]))
             else:
                 get_stat(args[2], False, int(args[4]))
+
+
+if __name__ == "__main__":
+    command_parser()
     exit()

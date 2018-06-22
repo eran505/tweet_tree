@@ -1,12 +1,9 @@
-import os, json, re
+import os, json
 from sys import exit
-
 import handler_tweet as ht
-import csv
-import hashlib
 import mmap
-
 import sys
+import pandas as pd
 
 
 def clean_string(string, prefix_symbol):
@@ -241,7 +238,7 @@ class Parser:
         self.sort_to_big(self.files, big_dir)
 
     def full_process(self):
-        #self.constract_fix_json_dir()
+        self.constract_fix_json_dir()
         if self.out_dir[-1] == '/':
             sort_p = '{}sorted'.format(self.out_dir)
             big_p = '{}big'.format(self.out_dir)
@@ -250,8 +247,6 @@ class Parser:
             sort_p = '{}/sorted'.format(self.out_dir)
         self.make_big_json(sort_p,self.out_dir)
         print "done !!"
-        build_trees("{}/big.json".format(big_p))
-
 
 
 
@@ -536,8 +531,14 @@ def parser_command(arg=None):
         if arg[1]=='ana':
             analysis(arg[2])
             return
-        p_pars = Parser(arg[1], arg[2])
-        p_pars.full_process()
+        if arg[1] == 'full':
+            rel_path = '/'.join(str(arg[1]).split('/')[:-1])
+            out = ht.mkdir_system(rel_path,'out')
+            p_pars = Parser(arg[1], out)
+            p_pars.full_process()
+            big_path = '{}/out/big/big.json'
+            ram_bulider(big_path)
+            analysis('{}/out/big/trees'.format(out))
         print "done process all data"
 
 
@@ -726,15 +727,17 @@ def analysis(dir_tree):
     df.to_csv('{}/size.csv'.format(out))
     print "done !"
 
-import pandas as pd
+
 if __name__ == "__main__":
     #cut_big('/home/ise/NLP/oren_data/out/big/big.json')
     print "Starting..."
     p_file = '/home/ise/NLP/tweet_tree/json_files/808503113808232453.txt'
     big_cut = '/home/ise/NLP/oren_data/out/big/cut_big.json'
+    DATA_path = '/home/ise/NLP/oren_data/DATA'
     arg = ['py', 'ram', big_cut ]
+    arg = ['',DATA_path]
     #loader('/home/ise/NLP/oren_data/out/big/cut_big.json')
     #exit()
-    parser_command(     )
+    parser_command(arg)
     print "Exiting..."
     exit(0)
