@@ -190,8 +190,12 @@ def get_stat(dir_tree, flag=False, num=7):
     d_list = []
     if os.path.isfile('{}/log_stat.txt'.format(out)):
         os.system('rm {}/log_stat.txt'.format(out))
+    size = float(len(all_tree))
+    ctr = 0
     for tree_file in all_tree:
-        print '{}'.format(tree_file)
+        ctr+=1
+        print "{}%".format(ctr/size * 100)
+        #print '{}'.format(tree_file)
         name = str(tree_file).split('/')[-1][:-4]
         with open('{}/log_stat.txt'.format(out) ,'a') as f:
             f.write('{}.txt \n'.format(name))
