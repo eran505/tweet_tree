@@ -99,7 +99,7 @@ def find_root(dict_tree):
             else:
                 father = new_node
         set_father.add(father.id)
-    print list(set_father)
+    #print list(set_father)
     set_father = list(set_father)
     return dict_tree[set_father[0]]
 
@@ -177,7 +177,7 @@ def median(lst):
         return (sortedLst[index] + sortedLst[index + 1]) / 2.0
 
 
-def get_stat(dir_tree, flag=True, num=3,debug=True):
+def get_stat(dir_tree, flag=True, num=3, debug=True):
     '''
     This functopn go over all the tree in the given dir and output statistic about them
     :param dir_tree: dir path (str)
@@ -209,7 +209,9 @@ def get_stat(dir_tree, flag=True, num=3,debug=True):
         if debug:
             median = dico_i['med_depth']
             if float(median) - int(median) > 0:
-                print "[Error] --> {}".format(dico_i['tree_name'])
+                with open('{}/log_err.txt'.format(out),'a') as f_err:
+                    msg = "[Error] --> {}".format(dico_i['tree_name'])
+                    f_err.write(msg)
     df = pd.DataFrame(d_list)
     df.to_csv("{}/stat.csv".format(out))
     print "---> done!!!"
