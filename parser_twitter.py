@@ -372,7 +372,10 @@ def get_replay(jsonstring):
     replay_id = None
     #    with open('/home/ise/Desktop/ex_tweet.json','w') as f :
     #        f.write(jsonstring)
-    data_stream = json.loads(jsonstring)
+    try:
+        data_stream = json.loads(jsonstring)
+    except ValueError:  # includes simplejson.decoder.JSONDecodeError
+        return replay_id
     if 'in_reply_to_status_id_str' in data_stream:
         data_replay = data_stream['in_reply_to_status_id_str']
         replay_id = str(data_replay)
@@ -611,6 +614,7 @@ def loader(file_name):
     '''
     d_tree={}
     d_memebers={}
+    rel_path = '/'.join(str(file_name).split('/')[:-1])
     size_s = _get_size_file(file_name)
     size_s = float(size_s)
     ctr_size = 0
@@ -622,6 +626,10 @@ def loader(file_name):
                 continue
             id_line = str(line).split('@#@')[0]
             rep_id = get_replay(str(line).split('@#@')[1])
+            if rep_id is None:
+                with open('{}/err_log.txt','a') as err_f:
+                    err_f.write(id_line+'\n')
+                    continue
             if id_line in d_tree :
                 tree_id = d_tree[id_line]
             else:
