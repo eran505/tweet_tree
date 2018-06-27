@@ -531,6 +531,10 @@ def parser_command(arg=None):
         if arg[1]=='ana':
             analysis(arg[2])
             return
+        if arg[1]=='size':
+            size_file = _get_size_file(arg[2])
+            print "SIZE : {}".format(size_file)
+            return
         if arg[1] == 'full':
             rel_path = '/'.join(str(arg[2]).split('/')[:-1])
             out = ht.mkdir_system(rel_path,'out')

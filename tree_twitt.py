@@ -230,7 +230,14 @@ def command_parser():
             else:
                 get_stat(args[2], False, int(args[4]))
 
+def load_csvs(path_csv,lim_size=4):
+    import pandas as pd
+    df = pd.read_csv(path_csv)
+    df_filter = df.loc[df['nodes_size'] > lim_size]
+    path_p = '/'.join(str(path_csv).split('/')[:-1])
+    df_filter.to_csv('{}/filter_{}.csv'.format(path_p,lim_size))
 
 if __name__ == "__main__":
+    #load_csvs('/home/ise/NLP/stat.csv')
     command_parser()
     exit()

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d739ee63-b558-41fc-9b03-19fa03aae1c7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser_twitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_twitter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tree_twitt.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree_twitt.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +20,8 @@
       <file leaf-file-name="parser_twitter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parser_twitter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="719" column="21" selection-start-line="719" selection-start-column="13" selection-end-line="719" selection-end-column="21" />
+            <state relative-caret-position="319">
+              <caret line="746" column="18" selection-start-line="746" selection-start-column="4" selection-end-line="746" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -29,8 +29,8 @@
       <file leaf-file-name="tree_twitt.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tree_twitt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-356">
-              <caret line="179" column="21" selection-start-line="179" selection-start-column="13" selection-end-line="179" selection-end-column="21" />
+            <state relative-caret-position="334">
+              <caret line="241" column="4" selection-start-line="241" selection-start-column="4" selection-end-line="241" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -124,7 +124,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.parser_twitter">
+  <component name="RunManager" selected="Python.tree_twitt">
     <configuration name="handler_tweet" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="tweet_tree" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -369,8 +369,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.parser_twitter" />
         <item itemvalue="Python.tree_twitt" />
+        <item itemvalue="Python.parser_twitter" />
         <item itemvalue="Python.pydevd" />
         <item itemvalue="Python.parser_2015" />
         <item itemvalue="Python.handler_tweet" />
@@ -397,7 +397,7 @@
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12050078" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21091291" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21060842" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -766,15 +766,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parser_twitter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="719" column="21" selection-start-line="719" selection-start-column="13" selection-end-line="719" selection-end-column="21" />
+        <state relative-caret-position="319">
+          <caret line="746" column="18" selection-start-line="746" selection-start-column="4" selection-end-line="746" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tree_twitt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-356">
-          <caret line="179" column="21" selection-start-line="179" selection-start-column="13" selection-end-line="179" selection-end-column="21" />
+        <state relative-caret-position="334">
+          <caret line="241" column="4" selection-start-line="241" selection-start-column="4" selection-end-line="241" selection-end-column="4" />
         </state>
       </provider>
     </entry>
