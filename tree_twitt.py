@@ -213,7 +213,7 @@ def get_stat(dir_tree, flag=True, num=3, debug=False):
 
 def command_parser():
     args = sys.argv
-    args = ['','stat','/home/ise/NLP/tran/tree_ex']
+    ###args = ['','stat','/home/ise/NLP/tran/tree_ex']
     if args[1] == 't':
         dico_i = json_tree(args[2])
     if args[1] == 'stat':
