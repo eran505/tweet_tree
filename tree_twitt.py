@@ -177,7 +177,7 @@ def median(lst):
         return (sortedLst[index] + sortedLst[index + 1]) / 2.0
 
 
-def get_stat(dir_tree, flag=True, num=3, debug=True):
+def get_stat(dir_tree, flag=True, num=3, debug=False):
     '''
     This functopn go over all the tree in the given dir and output statistic about them
     :param dir_tree: dir path (str)
@@ -206,12 +206,6 @@ def get_stat(dir_tree, flag=True, num=3, debug=True):
         dico_i = json_tree(tree_file)
         dico_i['tree_name'] = "{}.txt".format(name)
         d_list.append(dico_i)
-        if debug:
-            median = dico_i['med_depth']
-            if float(median) - int(median) > 0:
-                with open('{}/log_err.txt'.format(out),'a') as f_err:
-                    msg = "[Error] --> {}".format(dico_i['tree_name'])
-                    f_err.write(msg)
     df = pd.DataFrame(d_list)
     df.to_csv("{}/stat.csv".format(out))
     print "---> done!!!"
@@ -219,7 +213,7 @@ def get_stat(dir_tree, flag=True, num=3, debug=True):
 
 def command_parser():
     args = sys.argv
-    ##args = ['','stat','/home/ise/NLP/tran']
+    args = ['','stat','/home/ise/NLP/tran/tree_ex']
     if args[1] == 't':
         dico_i = json_tree(args[2])
     if args[1] == 'stat':
