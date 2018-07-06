@@ -627,7 +627,7 @@ def loader(file_name):
             id_line = str(line).split('@#@')[0]
             rep_id = get_replay(str(line).split('@#@')[1])
             if rep_id is None:
-                with open('{}/err_log.txt','a') as err_f:
+                with open('{}/err_read_json_log.txt'.format(rel_path),'a') as err_f:
                     err_f.write(id_line+'\n')
                     continue
             if id_line in d_tree :
