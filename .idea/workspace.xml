@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d739ee63-b558-41fc-9b03-19fa03aae1c7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser_twitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_twitter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +19,11 @@
       <file leaf-file-name="parser_twitter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parser_twitter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-209">
-              <caret line="629" column="47" selection-start-line="629" selection-start-column="30" selection-end-line="629" selection-end-column="47" />
+            <state relative-caret-position="688">
+              <caret line="561" column="27" lean-forward="true" selection-start-line="561" selection-start-column="27" selection-end-line="561" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -29,8 +31,8 @@
       <file leaf-file-name="tree_twitt.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tree_twitt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-210">
-              <caret line="125" column="7" selection-start-line="125" selection-start-column="7" selection-end-line="125" selection-end-column="7" />
+            <state relative-caret-position="290">
+              <caret line="31" column="8" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -46,7 +48,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>try</find>
       <find>TP.</find>
       <find>long</find>
       <find>RAM</find>
@@ -59,7 +60,6 @@
       <find>path_o</find>
       <find>ram[2]</find>
       <find>ram_big</find>
-      <find>repl</find>
       <find>\n</find>
       <find>in_re</find>
       <find>in</find>
@@ -68,6 +68,14 @@
       <find>constract_fix_json_dir</find>
       <find>get_replay</find>
       <find>print</find>
+      <find>err_log.</find>
+      <find>try</find>
+      <find>json</find>
+      <find>json.l</find>
+      <find>repl</find>
+      <find>in_reply_to_status_id_str</find>
+      <find>with</find>
+      <find>log</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -126,7 +134,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tree_twitt">
+  <component name="RunManager" selected="Python.parser_twitter">
     <configuration name="handler_tweet" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="tweet_tree" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -371,8 +379,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.tree_twitt" />
         <item itemvalue="Python.parser_twitter" />
+        <item itemvalue="Python.tree_twitt" />
         <item itemvalue="Python.pydevd" />
         <item itemvalue="Python.parser_2015" />
         <item itemvalue="Python.handler_tweet" />
@@ -396,14 +404,15 @@
     <frame x="1431" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.08406114" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08406114" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21060842" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32948583" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20986359" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.41653666" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -412,8 +421,26 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21060842" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08406114" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.41653666" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32948583" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -427,12 +454,12 @@
           <option name="timeStamp" value="94" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tree_twitt.py</url>
-          <line>79</line>
-          <option name="timeStamp" value="97" />
+          <url>file://$PROJECT_DIR$/parser_twitter.py</url>
+          <line>813</line>
+          <option name="timeStamp" value="99" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="98" />
+      <option name="time" value="100" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -773,15 +800,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tree_twitt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-210">
-          <caret line="125" column="7" selection-start-line="125" selection-start-column="7" selection-end-line="125" selection-end-column="7" />
+        <state relative-caret-position="290">
+          <caret line="31" column="8" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parser_twitter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-209">
-          <caret line="629" column="47" selection-start-line="629" selection-start-column="30" selection-end-line="629" selection-end-column="47" />
+        <state relative-caret-position="688">
+          <caret line="561" column="27" lean-forward="true" selection-start-line="561" selection-start-column="27" selection-end-line="561" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

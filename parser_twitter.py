@@ -245,12 +245,11 @@ class Parser:
         else:
             big_p = '{}/big'.format(self.out_dir)
             sort_p = '{}/sorted'.format(self.out_dir)
-        self.make_big_json(sort_p,self.out_dir)
+        self.make_big_json(sort_p, self.out_dir)
         print "done !!"
 
 
-
-def build_tree_ram(f_name_big,long=5):
+def build_tree_ram(f_name_big, long=5):
     pass
     ram_big = ["1", "1", [], 0, 0]
     out_dir = '/'.join(str(f_name_big).split('/')[:-1])
@@ -261,13 +260,13 @@ def build_tree_ram(f_name_big,long=5):
     big_file = open('{}'.format(f_name_big), 'r')
     dico_data = {}
     start = True
-    with open(f_name_big,'r+') as f_big:
-        ram_big[2]=f_big.readlines()
+    with open(f_name_big, 'r+') as f_big:
+        ram_big[2] = f_big.readlines()
 
     while not_done:
         cur_index = 0
         cur_line = ram_big[2][cur_index]
-        cur_index+=1
+        cur_index += 1
         if cur_line is None or len(cur_line) < 1:
             break
         end_not = True
@@ -282,7 +281,7 @@ def build_tree_ram(f_name_big,long=5):
             if ans is not None:
                 flush_tree(dico_data, lookup_dir, trees_dir, long, ans)
                 break
-            replay = get_replay(json_line)
+            replay = get_json_data(json_line)
             if replay is None:
                 end_not = False
                 flush_tree(dico_data, lookup_dir, trees_dir, long)
@@ -290,7 +289,7 @@ def build_tree_ram(f_name_big,long=5):
                 continue
             print "{}->{}".format(id_line, replay)
             print "len: {} {}".format(len(id_line), len(replay))
-            replay_data = binary_search(replay, f_name_big, ram_big,True)
+            replay_data = binary_search(replay, f_name_big, ram_big, True)
             if replay_data is None:
                 flush_tree(dico_data, lookup_dir, trees_dir, long)
                 dico_data = {}
@@ -335,7 +334,7 @@ def build_trees(f_name_big, long=5):
             if ans is not None:
                 flush_tree(dico_data, lookup_dir, trees_dir, long, ans)
                 break
-            replay = get_replay(json_line)
+            replay = get_json_data(json_line)
             if replay is None:
                 end_not = False
                 flush_tree(dico_data, lookup_dir, trees_dir, long)
@@ -363,7 +362,7 @@ def _look_up(id, dir_lookup, long):
     return None
 
 
-def get_replay(jsonstring):
+def get_json_data(jsonstring, val='in_reply_to_status_id_str'):
     """
     Extracting replay id from the given json tweet data
     :param json_file: (string)
@@ -376,8 +375,8 @@ def get_replay(jsonstring):
         data_stream = json.loads(jsonstring)
     except ValueError:  # includes simplejson.decoder.JSONDecodeError
         return replay_id
-    if 'in_reply_to_status_id_str' in data_stream:
-        data_replay = data_stream['in_reply_to_status_id_str']
+    if val in data_stream:
+        data_replay = data_stream[val]
         replay_id = str(data_replay)
     return replay_id
 
@@ -428,7 +427,7 @@ def _get_line(index, f_name, fill, ram):
     return num, line
 
 
-def binary_search(value, path_file, ram, ram_size=200000,all=False):
+def binary_search(value, path_file, ram, ram_size=200000, all=False):
     """
     ram[0] = min id
     ram[1] = max id
@@ -516,6 +515,7 @@ def binary_search_ram(ram, value):
             return True, None
     return False, None
 
+
 def parser_command(arg=None):
     if arg is None:
         arg = sys.argv
@@ -528,26 +528,31 @@ def parser_command(arg=None):
             build_trees(arg[2])
             print "done process all data"
             return
-        if arg[1] =='ram':
-            ram_bulider(arg[2])
+        if arg[1] == 'ram':
+            if len(arg) == 3:
+                ram_bulider(arg[2])
+            else:
+                ram_bulider(arg[2],arg[3])
             return
-        if arg[1]=='ana':
+        if arg[1] == 'ana':
             analysis(arg[2])
             return
-        if arg[1]=='size':
+        if arg[1] == 'size':
             size_file = _get_size_file(arg[2])
             print "SIZE : {}".format(size_file)
             return
+        if arg[1] == 'tuple':
+            tweet_id_replay_id_file_wrapper(arg[2],arg[3])
         if arg[1] == 'full':
             rel_path = '/'.join(str(arg[2]).split('/')[:-1])
-            out = ht.mkdir_system(rel_path,'out')
+            out = ht.mkdir_system(rel_path, 'out')
             p_pars = Parser(arg[2], out)
             p_pars.full_process()
             big_path = '{}/big/big.json'.format(out)
             ram_bulider(big_path)
             analysis('{}/big/trees'.format(out))
             print "done process all data"
-        print "-----------"*10
+        print "-----------" * 10
 
 
 def mapcount(filename):
@@ -559,38 +564,40 @@ def mapcount(filename):
         lines += 1
     return lines
 
-def cut_big(p_path,s=30000,num=5000,lim=10000):
+
+def cut_big(p_path, s=30000, num=5000, lim=10000):
     size = mapcount(p_path)
     print 'size=', size
     path_rel = '/'.join(str(p_path).split('/')[:-1])
-    data_line=[]
-    ctr=-1
-    with open(p_path,'r+') as f:
+    data_line = []
+    ctr = -1
+    with open(p_path, 'r+') as f:
         for line in f:
-            ctr+=1
+            ctr += 1
             if ctr >= s:
                 data_line.append(line)
-            if s+num<ctr:
+            if s + num < ctr:
                 break
-            if lim<len(data_line):
-                append_data_file('{}/cut_big.json'.format(path_rel),data_line)
-                data_line=[]
-        if len(data_line)>0:
+            if lim < len(data_line):
+                append_data_file('{}/cut_big.json'.format(path_rel), data_line)
+                data_line = []
+        if len(data_line) > 0:
             append_data_file('{}/cut_big.json'.format(path_rel), data_line)
 
     exit()
 
 
-def append_data_file(path,arr_data):
-    with open(path,'a') as f:
+def append_data_file(path, arr_data):
+    with open(path, 'a') as f:
         for item in arr_data:
-            f.write(item+'\n')
+            f.write(item + '\n')
+
 
 def get_hash_json(big_p):
-    d={}
-    with open(big_p,'r+') as big_f:
+    d = {}
+    with open(big_p, 'r+') as big_f:
         for line in big_f:
-            if line =='\n':
+            if line == '\n':
                 continue
             split_arr = str(line).split('@#@')
             d[split_arr[0]] = split_arr[1]
@@ -598,39 +605,49 @@ def get_hash_json(big_p):
 
 
 def get_hash_json_size(big_p):
-    d={}
+    d = {}
     size = 0
-    with open(big_p,'r+') as big_f:
+    with open(big_p, 'r+') as big_f:
         for line in big_f:
-            if line =='\n':
+            if line == '\n':
                 continue
-            size = size +1
+            size = size + 1
     return size
 
-def loader(file_name):
+
+def loader(file_name, tuple=False):
     '''
     :param num_line:
     :return:
     '''
-    d_tree={}
-    d_memebers={}
+    d_tree = {}
+    d_memebers = {}
     rel_path = '/'.join(str(file_name).split('/')[:-1])
     size_s = _get_size_file(file_name)
     size_s = float(size_s)
     ctr_size = 0
-    with open(file_name,'r+') as f_big :
+    with open(file_name, 'r+') as f_big:
         for line in f_big:
-            print "{}%".format(ctr_size/size_s * 100)
+            print "{}%".format(ctr_size / size_s * 100)
             ctr_size = ctr_size + 1
             if line == '\n':
                 continue
-            id_line = str(line).split('@#@')[0]
-            rep_id = get_replay(str(line).split('@#@')[1])
-            if rep_id is None:
-                with open('{}/err_read_json_log.txt'.format(rel_path),'a') as err_f:
-                    err_f.write(id_line+'\n')
+
+            if tuple:
+                arry = line.split(':')
+                if len(arry) != 2:
+                    print "[Error] cant split by = :  line--> {} ".format(line)
                     continue
-            if id_line in d_tree :
+                id_line = arry[0]
+                rep_id = arry[1]
+            else:
+                id_line = str(line).split('@#@')[0]
+                rep_id = get_json_data(str(line).split('@#@')[1])
+            if rep_id is None:
+                with open('{}/err_read_json_log.txt'.format(rel_path), 'a') as err_f:
+                    err_f.write(id_line + '\n')
+                    continue
+            if id_line in d_tree:
                 tree_id = d_tree[id_line]
             else:
                 tree_id = id_line
@@ -645,37 +662,38 @@ def loader(file_name):
                 if tree_id not in d_memebers:
                     d_memebers[tree_id] = []
                 for mem in list_rep_mem:
-                    if mem=='None':
+                    if mem == 'None':
                         continue
-                    d_tree[mem]=tree_id
-                    _append(d_memebers[tree_id],mem)
+                    d_tree[mem] = tree_id
+                    _append(d_memebers[tree_id], mem)
                 del d_memebers[tree_rep_id]
-                _append(d_memebers[tree_id],id_line)
+                _append(d_memebers[tree_id], id_line)
                 continue
             if tree_id not in d_memebers:
                 d_memebers[tree_id] = []
-            _append(d_memebers[tree_id],id_line)
-            if rep_id !='None':
-                d_tree[rep_id]=tree_id
-                _append(d_memebers[tree_id],rep_id)
+            _append(d_memebers[tree_id], id_line)
+            if rep_id != 'None':
+                d_tree[rep_id] = tree_id
+                _append(d_memebers[tree_id], rep_id)
 
-    d_num={}
-    for key,val in d_memebers.iteritems():
+    d_num = {}
+    for key, val in d_memebers.iteritems():
         size_v = len(val)
         if size_v in d_num:
             d_num[size_v].append(key)
         else:
-            d_num[size_v]=[key]
+            d_num[size_v] = [key]
     for ky in d_num:
-        print '{} | {}'.format(ky,len(d_num[ky]))
+        print '{} | {}'.format(ky, len(d_num[ky]))
     return d_memebers
 
 
-def _append(target_list , item):
+def _append(target_list, item):
     for x in target_list:
         if x == item:
             return
     target_list.append(item)
+
 
 def sort_member_by_size(d_mem):
     '''
@@ -684,74 +702,138 @@ def sort_member_by_size(d_mem):
     '''
     val_list = d_mem.values()
 
-def flush_to_files(d_mem,json_hash,out_p):
-    for ky,list_memebers in d_mem.iteritems():
-        data=[]
+
+def flush_to_files(d_mem, json_hash, out_p):
+    for ky, list_memebers in d_mem.iteritems():
+        data = []
         for mem in list_memebers:
             if mem in json_hash:
                 data.append(json_hash[mem])
-        dump(data,out_p,ky,True)
+        dump(data, out_p, ky, True)
 
 
-def dump(data,path,f_name,is_list=False):
-    with open('{}/{}.txt'.format(path,f_name),'a') as f:
+def dump(data, path, f_name, is_list=False):
+    with open('{}/{}.txt'.format(path, f_name), 'a') as f:
         if is_list:
             for item in data:
-                f.write(item+'\n')
+                f.write(item + '\n')
         else:
             f.write(data + '\n')
 
 
-def ram_bulider(f_name_big):
+def ram_bulider(f_name_big, tuple_path=None):
     out_dir = '/'.join(str(f_name_big).split('/')[:-1])
-    lookup_dir = ht.mkdir_system(out_dir, 'lookup')
     trees_dir = ht.mkdir_system(out_dir, 'trees')
     log_dir = ht.mkdir_system(out_dir, 'log')
-    d_mem = loader(f_name_big)
+    if tuple_path is not None:
+        d_mem = loader(tuple_path)
+    else:
+        d_mem = loader(f_name_big)
     list_val = d_mem.values()
     str_list = [str(x) for x in list_val]
     str_list.sort(key=len, reverse=True)
-    loger(str_list ,log_dir,'mem_d.txt',False,True)
+    loger(str_list, log_dir, 'mem_d.txt', False, True)
     d_json = get_hash_json(f_name_big)
     flush_to_files(d_mem, d_json, trees_dir)
+
 
 def sort_list():
     pass
 
-def loger(obj,path,f_name,is_dict=True,is_list=False):
+
+def loger(obj, path, f_name, is_dict=True, is_list=False):
     if is_dict:
-        with open('{}/{}'.format(path,f_name),'a') as log_f:
-            for ky,val in obj.iteritems():
-                log_f.write('{} : {} \n'.format(ky,val))
+        with open('{}/{}'.format(path, f_name), 'a') as log_f:
+            for ky, val in obj.iteritems():
+                log_f.write('{} : {} \n'.format(ky, val))
     if is_list:
-        with open('{}/{}'.format(path,f_name),'a') as log_f:
+        with open('{}/{}'.format(path, f_name), 'a') as log_f:
             for val in obj:
                 log_f.write('{} \n'.format(val))
 
 
 def analysis(dir_tree):
-    list_tree = ht.walk_rec(dir_tree,[],'.txt')
-    d_list=[]
+    list_tree = ht.walk_rec(dir_tree, [], '.txt')
+    d_list = []
     out = '/'.join(str(dir_tree).split('/')[:-1])
     for x in list_tree:
         name = str(x).split('/')[-1][:-4]
         size = get_hash_json_size(x)
-        d_list.append({'name':name,'nodes':size})
+        d_list.append({'name': name, 'nodes': size})
     df = pd.DataFrame(d_list)
     df.to_csv('{}/size.csv'.format(out))
     print "done !"
 
 
+def log_error(path, msg, file_name='err_log.txt', mode_append=True):
+    """
+    log to file the error
+    :param path: path to dir
+    :param msg: the given message
+    :param file_name: the file name to write the log [ default err_log.txt ]
+    :param mode_append: to append to file or not (T/F) [ default T ]
+    :return: True or False if the job is done
+    """
+    if path[-1] == '/':
+        path = path[:-1]
+    mode = 'a'
+    if mode_append is False:
+        mode = 'w'
+    try:
+        with open("{}/{}".format(path, file_name), mode) as f:
+            f.write(msg)
+            f.write('\n')
+    except IOError:
+        return False
+    return True
+
+
+def tweet_id_replay_id_file_wrapper(dir_path, out_path):
+    list_files=ht.walk_rec(dir_path,[],'.json')
+    out_logger = ht.mkdir_system(out_path,'loging')
+    tuples_out = ht.mkdir_system(out_path, 'tuples')
+    for p_path in list_files:
+        tweet_id_replay_id_file(p_path,tuples_out,out_logger)
+
+
+def tweet_id_replay_id_file(file_name, out_path, log_dir):
+    try:
+        with open(file_name, 'r+') as f:
+            buffer_data = f.readlines()
+    except OSError:
+        log_error(log_dir,'cant read the file : {} '.format(file_name))
+        return None
+    list_ids = list()
+    none_ctr = 0
+    ctr = 0
+    for line in buffer_data:
+        arr = str(line).split('@#@')
+        if len(arr) != 2 :
+            log_error(log_dir,'cant split the by @#@ the line : {}'.format(line),'un_splitiblae.txt')
+        ctr+=1
+        id_tweet = arr[0]
+        id_reply = get_json_data(arr[1])
+        if id_reply =='None':
+            none_ctr+=1
+        list_ids.append("{}:{}".format(id_tweet,id_reply))
+    print "done load data to ram !"
+    with open("{}/tuple_id.txt".format(out_path), 'w') as f_list:
+        for item in list_ids:
+            f_list.write("{}\n".format(item))
+    print "none:{}%\nnot_none:{}%\nall:{}".format(float(none_ctr)/ctr*100,float(ctr-none_ctr)/ctr*100,ctr)
+    return True
+
 if __name__ == "__main__":
-    #cut_big('/home/ise/NLP/oren_data/out/big/big.json')
+    # cut_big('/home/ise/NLP/oren_data/out/big/big.json')
     print "Starting..."
     p_file = '/home/ise/NLP/tweet_tree/json_files/808503113808232453.txt'
     big_cut = '/home/ise/NLP/oren_data/out/big/cut_big.json'
     DATA_path = '/home/ise/NLP/oren_data/DATA'
-    arg = ['py', 'ram', big_cut ]
-    arg = ['',DATA_path]
-    #loader('/home/ise/NLP/oren_data/out/big/cut_big.json')
-    #exit()
-    parser_command()
+    arg = ['py', 'ram', big_cut]
+    arg = ['', DATA_path]
+    arg =['','tuple','/home/ise/NLP/tmp','/home/ise/NLP/tmp']
+    # loader('/home/ise/NLP/oren_data/out/big/cut_big.json')
+    # exit()
+    parser_command(arg)
     print "Exiting..."
     exit(0)
