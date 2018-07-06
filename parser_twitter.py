@@ -834,6 +834,6 @@ if __name__ == "__main__":
     arg =['','tuple','/home/ise/NLP/tmp','/home/ise/NLP/tmp']
     # loader('/home/ise/NLP/oren_data/out/big/cut_big.json')
     # exit()
-    parser_command(arg)
+    parser_command()
     print "Exiting..."
     exit(0)
