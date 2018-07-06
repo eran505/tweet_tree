@@ -726,7 +726,7 @@ def ram_bulider(f_name_big, tuple_path=None):
     trees_dir = ht.mkdir_system(out_dir, 'trees')
     log_dir = ht.mkdir_system(out_dir, 'log')
     if tuple_path is not None:
-        d_mem = loader(tuple_path)
+        d_mem = loader(tuple_path,True)
     else:
         d_mem = loader(f_name_big)
     list_val = d_mem.values()
