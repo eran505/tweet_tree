@@ -246,6 +246,7 @@ class Parser:
             big_p = '{}/big'.format(self.out_dir)
             sort_p = '{}/sorted'.format(self.out_dir)
         self.make_big_json(sort_p, self.out_dir)
+        os.system("rm -r {}".format(sort_p))
         print "done !!"
 
 
@@ -525,7 +526,10 @@ def parser_command(arg=None):
         return
     else:
         if arg[1] == 'big':
-            build_trees(arg[2])
+            rel_path = '/'.join(str(arg[2]).split('/')[:-1])
+            out = ht.mkdir_system(rel_path, 'out')
+            p_pars = Parser(arg[2], out)
+            p_pars.full_process()
             print "done process all data"
             return
         if arg[1] == 'ram':
