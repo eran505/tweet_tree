@@ -793,6 +793,12 @@ def log_error(path, msg, file_name='err_log.txt', mode_append=True):
 
 
 def tweet_id_replay_id_file_wrapper(dir_path, out_path):
+    '''
+    wrapper for the function tweet_id_replay_id_file, help mange the dir and file
+    :param dir_path: where the json files
+    :param out_path: where to write the out put
+    :return: None
+    '''
     list_files=ht.walk_rec(dir_path,[],'.json')
     out_logger = ht.mkdir_system(out_path,'loging')
     tuples_out = ht.mkdir_system(out_path, 'tuples')
@@ -801,6 +807,13 @@ def tweet_id_replay_id_file_wrapper(dir_path, out_path):
 
 
 def tweet_id_replay_id_file(file_name, out_path, log_dir):
+    '''
+    This function make a tuple txt file <tweet_ID:replay_ID> form a given json file
+    :param file_name:
+    :param out_path:
+    :param log_dir:
+    :return: None or True if the process finshed with not errors
+    '''
     try:
         with open(file_name, 'r+') as f:
             buffer_data = f.readlines()
@@ -820,6 +833,7 @@ def tweet_id_replay_id_file(file_name, out_path, log_dir):
         if id_reply =='None':
             none_ctr+=1
         list_ids.append("{}:{}".format(id_tweet,id_reply))
+    list_ids.sort(key=len, reverse=True)
     print "done load data to ram !"
     with open("{}/tuple_id.txt".format(out_path), 'w') as f_list:
         for item in list_ids:
@@ -838,6 +852,6 @@ if __name__ == "__main__":
     arg =['','tuple','/home/ise/NLP/tmp','/home/ise/NLP/tmp']
     # loader('/home/ise/NLP/oren_data/out/big/cut_big.json')
     # exit()
-    parser_command()
+    parser_command(arg)
     print "Exiting..."
     exit(0)
