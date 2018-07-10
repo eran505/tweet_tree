@@ -838,7 +838,8 @@ def tweet_id_replay_id_file(file_name, out_path, log_dir):
     with open("{}/tuple_id.txt".format(out_path), 'w') as f_list:
         for item in list_ids:
             f_list.write("{}\n".format(item))
-    print "none:{}%\nnot_none:{}%\nall:{}".format(float(none_ctr)/ctr*100,float(ctr-none_ctr)/ctr*100,ctr)
+    msg = "none:{}%\nnot_none:{}%\nall:{}".format(float(none_ctr)/ctr*100,float(ctr-none_ctr)/ctr*100,ctr)
+    log_error(log_dir,msg,'info.log')
     return True
 
 if __name__ == "__main__":

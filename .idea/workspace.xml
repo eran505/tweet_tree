@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d739ee63-b558-41fc-9b03-19fa03aae1c7" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser_twitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_twitter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +20,8 @@
       <file leaf-file-name="parser_twitter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parser_twitter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="854" column="22" selection-start-line="854" selection-start-column="22" selection-end-line="854" selection-end-column="22" />
+            <state relative-caret-position="196">
+              <caret line="808" column="4" selection-start-line="808" selection-start-column="4" selection-end-line="808" selection-end-column="4" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -31,8 +32,8 @@
       <file leaf-file-name="tree_twitt.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tree_twitt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="241" column="24" selection-start-line="241" selection-start-column="24" selection-end-line="241" selection-end-column="24" />
+            <state relative-caret-position="17">
+              <caret line="200" column="45" lean-forward="true" selection-start-line="200" selection-start-column="45" selection-end-line="200" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -48,7 +49,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>TP.</find>
       <find>long</find>
       <find>RAM</find>
       <find />
@@ -65,7 +65,6 @@
       <find>in</find>
       <find>comment</find>
       <find>decompress_file</find>
-      <find>constract_fix_json_dir</find>
       <find>get_replay</find>
       <find>print</find>
       <find>err_log.</find>
@@ -76,6 +75,9 @@
       <find>in_reply_to_status_id_str</find>
       <find>log</find>
       <find>pars</find>
+      <find>end</find>
+      <find>sort_file</find>
+      <find>constract_fix_json_dir</find>
       <find>with</find>
     </findStrings>
   </component>
@@ -94,11 +96,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1431" />
-    <option name="y" value="-4" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-28" />
+    <option name="y" value="35" />
     <option name="width" value="1855" />
-    <option name="height" value="1084" />
+    <option name="height" value="1140" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -402,14 +404,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1431" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08406114" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0829421" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32948583" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20986359" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3120125" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -422,25 +423,26 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32948583" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21060842" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08406114" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21060842" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32948583" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.41653666" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32948583" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -454,13 +456,8 @@
           <line>247</line>
           <option name="timeStamp" value="94" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/parser_twitter.py</url>
-          <line>830</line>
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="100" />
+      <option name="time" value="101" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -801,15 +798,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tree_twitt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="241" column="24" selection-start-line="241" selection-start-column="24" selection-end-line="241" selection-end-column="24" />
+        <state relative-caret-position="17">
+          <caret line="200" column="45" lean-forward="true" selection-start-line="200" selection-start-column="45" selection-end-line="200" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parser_twitter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="854" column="22" selection-start-line="854" selection-start-column="22" selection-end-line="854" selection-end-column="22" />
+        <state relative-caret-position="196">
+          <caret line="808" column="4" selection-start-line="808" selection-start-column="4" selection-end-line="808" selection-end-column="4" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
